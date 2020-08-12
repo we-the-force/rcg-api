@@ -30,8 +30,8 @@
       "type": "text"
     },
     "articulos": {
-      "collection": "articulo",
-      "via": "autor"
+      "via": "autor",
+      "collection": "articulo"
     }
   }
 }

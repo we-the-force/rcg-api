@@ -40,14 +40,14 @@
       "collection": "comentario",
       "via": "articulo"
     },
-    "Tags": {
+    "tags": {
       "type": "component",
       "repeatable": true,
       "component": "tags.tags"
     },
     "autor": {
-      "via": "articulos",
-      "model": "autor"
+      "model": "autor",
+      "via": "articulos"
     }
   }
 }
