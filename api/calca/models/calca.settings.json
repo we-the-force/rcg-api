@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "calcas",
+  "info": {
+    "name": "Calca"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "direccion": {
+      "type": "text"
+    },
+    "ciudad": {
+      "type": "string"
+    },
+    "telefono": {
+      "type": "string"
+    },
+    "numero_calca": {
+      "type": "string"
+    }
+  }
+}

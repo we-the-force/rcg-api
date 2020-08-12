@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/espectacular-info",
+      "handler": "espectacular-info.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/espectacular-info",
+      "handler": "espectacular-info.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/espectacular-info",
+      "handler": "espectacular-info.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

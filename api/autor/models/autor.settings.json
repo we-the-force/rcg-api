@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "autors",
+  "info": {
+    "name": "autor"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "img": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "correo": {
+      "type": "email"
+    },
+    "descripcion": {
+      "type": "text"
+    },
+    "articulos": {
+      "collection": "articulo",
+      "via": "autor"
+    }
+  }
+}

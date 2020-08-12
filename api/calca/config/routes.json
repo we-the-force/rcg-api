@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/calcas",
+      "handler": "calca.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/calcas/count",
+      "handler": "calca.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/calcas/:id",
+      "handler": "calca.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/calcas",
+      "handler": "calca.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/calcas/:id",
+      "handler": "calca.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/calcas/:id",
+      "handler": "calca.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

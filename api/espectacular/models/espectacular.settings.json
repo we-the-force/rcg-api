@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "espectaculars",
+  "info": {
+    "name": "Espectacular"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "imagen": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "direccion": {
+      "type": "text"
+    },
+    "zona": {
+      "type": "enumeration",
+      "enum": [
+        "norte",
+        "sur",
+        "oriente",
+        "poniente",
+        "centro"
+      ]
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/espectaculars",
+      "handler": "espectacular.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/espectaculars/count",
+      "handler": "espectacular.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/espectaculars/:id",
+      "handler": "espectacular.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/espectaculars",
+      "handler": "espectacular.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/espectaculars/:id",
+      "handler": "espectacular.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/espectaculars/:id",
+      "handler": "espectacular.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/aviso-de-privacidad",
+      "handler": "aviso-de-privacidad.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/aviso-de-privacidad",
+      "handler": "aviso-de-privacidad.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/aviso-de-privacidad",
+      "handler": "aviso-de-privacidad.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

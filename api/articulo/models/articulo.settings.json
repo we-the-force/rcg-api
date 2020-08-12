@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articulos",
+  "info": {
+    "name": "articulo"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Titulo": {
+      "type": "string"
+    },
+    "cover": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "fecha": {
+      "type": "date"
+    },
+    "visitas": {
+      "type": "integer"
+    },
+    "categorias": {
+      "collection": "categorias",
+      "via": "articulos"
+    },
+    "comentarios": {
+      "collection": "comentario",
+      "via": "articulo"
+    },
+    "Tags": {
+      "type": "component",
+      "repeatable": true,
+      "component": "tags.tags"
+    },
+    "autor": {
+      "via": "articulos",
+      "model": "autor"
+    }
+  }
+}

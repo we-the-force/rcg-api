@@ -1,0 +1,44 @@
+{
+  "kind": "singleType",
+  "collectionName": "contactos",
+  "info": {
+    "name": "contacto"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "direccion": {
+      "type": "text"
+    },
+    "telefono": {
+      "type": "string"
+    },
+    "correo": {
+      "type": "email"
+    },
+    "img": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "video": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

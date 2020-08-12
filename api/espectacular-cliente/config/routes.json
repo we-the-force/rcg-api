@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/espectacular-clientes",
+      "handler": "espectacular-cliente.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/espectacular-clientes/count",
+      "handler": "espectacular-cliente.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/espectacular-clientes/:id",
+      "handler": "espectacular-cliente.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/espectacular-clientes",
+      "handler": "espectacular-cliente.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/espectacular-clientes/:id",
+      "handler": "espectacular-cliente.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/espectacular-clientes/:id",
+      "handler": "espectacular-cliente.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "espectacular_clientes",
+  "info": {
+    "name": "Espectacular cliente"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "logo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

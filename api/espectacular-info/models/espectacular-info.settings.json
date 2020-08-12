@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "espectacular_infos",
+  "info": {
+    "name": "espectacular info"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "quienes_somos": {
+      "type": "text"
+    },
+    "porque_nosotros": {
+      "type": "text"
+    },
+    "nosotros": {
+      "type": "richtext"
+    }
+  }
+}

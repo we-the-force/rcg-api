@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/derecho-de-replica",
+      "handler": "derecho-de-replica.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/derecho-de-replica",
+      "handler": "derecho-de-replica.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/derecho-de-replica",
+      "handler": "derecho-de-replica.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

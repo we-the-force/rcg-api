@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "derecho_de_replicas",
+  "info": {
+    "name": "derecho de replica"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "nombre": {
+      "type": "string"
+    },
+    "direccion": {
+      "type": "text"
+    },
+    "telefono": {
+      "type": "string"
+    },
+    "correo": {
+      "type": "email"
+    }
+  }
+}

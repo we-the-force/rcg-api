@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/nosotros",
+      "handler": "nosotros.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/nosotros",
+      "handler": "nosotros.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/nosotros",
+      "handler": "nosotros.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
