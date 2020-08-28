@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "programacion_semanas",
+  "info": {
+    "name": "programacionSemana"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "programacion": {
+      "type": "component",
+      "repeatable": false,
+      "component": "horario-component.horario-component"
+    },
+    "es_tv": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_horario_programa_horario_programas",
+  "info": {
+    "name": "HorarioPrograma",
+    "icon": "align-left"
+  },
+  "options": {},
+  "attributes": {
+    "hora_inicio": {
+      "type": "time"
+    },
+    "hora_final": {
+      "type": "time"
+    },
+    "programa": {
+      "model": "programa"
+    }
+  }
+}

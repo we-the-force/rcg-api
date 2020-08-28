@@ -1,0 +1,45 @@
+{
+  "collectionName": "components_horario_component_horario_components",
+  "info": {
+    "name": "horario-component",
+    "icon": "arrow-alt-circle-right"
+  },
+  "options": {},
+  "attributes": {
+    "lunes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "horario-programa.horario-programa"
+    },
+    "martes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "horario-programa.horario-programa"
+    },
+    "miercoles": {
+      "type": "component",
+      "repeatable": true,
+      "component": "horario-programa.horario-programa"
+    },
+    "jueves": {
+      "type": "component",
+      "repeatable": true,
+      "component": "horario-programa.horario-programa"
+    },
+    "viernes": {
+      "type": "component",
+      "repeatable": true,
+      "component": "horario-programa.horario-programa"
+    },
+    "sabado": {
+      "type": "component",
+      "repeatable": true,
+      "component": "horario-programa.horario-programa"
+    },
+    "domingo": {
+      "type": "component",
+      "repeatable": true,
+      "component": "horario-programa.horario-programa"
+    }
+  }
+}

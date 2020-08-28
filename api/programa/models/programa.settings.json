@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "programas",
+  "info": {
+    "name": "Programa"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Nombre": {
+      "type": "string"
+    },
+    "Descripcion": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/programacion-semanas",
+      "handler": "programacion-semana.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/programacion-semanas/count",
+      "handler": "programacion-semana.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/programacion-semanas/:id",
+      "handler": "programacion-semana.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/programacion-semanas",
+      "handler": "programacion-semana.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/programacion-semanas/:id",
+      "handler": "programacion-semana.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/programacion-semanas/:id",
+      "handler": "programacion-semana.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

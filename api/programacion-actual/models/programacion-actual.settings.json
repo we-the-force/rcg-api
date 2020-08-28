@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "programacion_actuals",
+  "info": {
+    "name": "programacionActual"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "programacion_semana": {
+      "model": "programacion-semana"
+    },
+    "tipo_programacion": {
+      "type": "enumeration",
+      "enum": [
+        "Radio",
+        "TV"
+      ]
+    }
+  }
+}
