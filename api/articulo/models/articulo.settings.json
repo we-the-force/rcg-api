@@ -10,7 +10,9 @@
   },
   "attributes": {
     "Titulo": {
-      "type": "string"
+      "type": "string",
+      "unique": true,
+      "required": true
     },
     "cover": {
       "model": "file",
@@ -48,6 +50,11 @@
     "autor": {
       "model": "autor",
       "via": "articulos"
+    },
+    "url": {
+      "type": "uid",
+      "targetField": "Titulo",
+      "required": true
     }
   }
 }

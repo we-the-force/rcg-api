@@ -9,24 +9,13 @@
     "timestamps": true
   },
   "attributes": {
-    "nombre": {
-      "type": "enumeration",
-      "enum": [
-        "Locales",
-        "Estatal",
-        "Nacional",
-        "Internacional",
-        "Deportes",
-        "Espectaculos",
-        "Destacadas",
-        "Fundacion_RCG",
-        "Salud_y_Cultura"
-      ]
-    },
     "articulos": {
       "via": "categorias",
       "collection": "articulo",
       "dominant": true
+    },
+    "nombre": {
+      "type": "string"
     }
   }
 }
