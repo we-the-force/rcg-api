@@ -16,6 +16,15 @@
     },
     "es_tv": {
       "type": "boolean"
+    },
+    "fecha_inicio": {
+      "type": "date"
+    },
+    "fecha_final": {
+      "type": "date"
+    },
+    "canal_estacion": {
+      "model": "canal-estacion"
     }
   }
 }
