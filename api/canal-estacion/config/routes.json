@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/canal-estacions",
+      "handler": "canal-estacion.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/canal-estacions/count",
+      "handler": "canal-estacion.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/canal-estacions/:id",
+      "handler": "canal-estacion.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/canal-estacions",
+      "handler": "canal-estacion.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/canal-estacions/:id",
+      "handler": "canal-estacion.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/canal-estacions/:id",
+      "handler": "canal-estacion.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
