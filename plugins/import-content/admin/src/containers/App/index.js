@@ -8,6 +8,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { NotFound } from 'strapi-helper-plugin';
+import HistoryPage from "../HistoryPage";
 // Utils
 import pluginId from '../../pluginId';
 // Containers
@@ -18,6 +19,11 @@ const App = () => {
     <div>
       <Switch>
         <Route path={`/plugins/${pluginId}`} component={HomePage} exact />
+        <Route
+          path={`/plugins/${pluginId}/history`}
+          component={HistoryPage}
+          exact
+        />
         <Route component={NotFound} />
       </Switch>
     </div>
