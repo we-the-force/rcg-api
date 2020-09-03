@@ -110,8 +110,7 @@ class HomePage extends Component {
     this.setState({ selectedContentType });
   };
   onSaveImport = async () => {
-    console.log('ahoy');
-    /* const { selectedContentType, fieldMapping } = this.state;
+    const { selectedContentType, fieldMapping } = this.state;
     const { analysisConfig } = this;
     const importConfig = {
       ...analysisConfig,
@@ -125,7 +124,7 @@ class HomePage extends Component {
       });
     } catch (e) {
       strapi.notification.error(`${e}`);
-    } */
+    }
   };
   render() {
     return (

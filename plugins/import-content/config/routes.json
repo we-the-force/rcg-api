@@ -11,7 +11,7 @@
     {
       "method": "POST",
       "path": "/",
-      "handler": "ImportContent.create",
+      "handler": "import-content.create",
       "config": {
         "policies": []
       }
@@ -19,7 +19,7 @@
     {
       "method": "GET",
       "path": "/",
-      "handler": "ImportContent.index",
+      "handler": "import-content.index",
       "config": {
         "policies": []
       }
@@ -27,7 +27,7 @@
     {
       "method": "DELETE",
       "path": "/:importId",
-      "handler": "ImportContent.delete",
+      "handler": "import-content.delete",
       "config": {
         "policies": []
       }
@@ -35,7 +35,7 @@
     {
       "method": "POST",
       "path": "/:importId/undo",
-      "handler": "ImportContent.undo",
+      "handler": "import-content.undo",
       "config": {
         "policies": []
       }
