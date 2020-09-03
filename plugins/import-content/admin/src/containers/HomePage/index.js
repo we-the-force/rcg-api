@@ -12,6 +12,7 @@ import {
 import Row from "../../components/Row";
 import Block from "../../components/Block";
 import { Select, Label } from "@buffetjs/core";
+import { Header } from "@buffetjs/custom";
 import { get, has, isEmpty, pickBy, set } from "lodash";
 import ExternalUrlForm from "../../components/ExternalUrlForm";
 import RawInputForm from "../../components/RawInputForm";
@@ -108,12 +109,53 @@ class HomePage extends Component {
   selectImportDest = selectedContentType => {
     this.setState({ selectedContentType });
   };
+  onSaveImport = async () => {
+    console.log('ahoy');
+    /* const { selectedContentType, fieldMapping } = this.state;
+    const { analysisConfig } = this;
+    const importConfig = {
+      ...analysisConfig,
+      contentType: selectedContentType,
+      fieldMapping
+    };
+    try {
+      await request("/import-content", { method: "POST", body: importConfig });
+      this.setState({ saving: false }, () => {
+        strapi.notification.info("Import started");
+      });
+    } catch (e) {
+      strapi.notification.error(`${e}`);
+    } */
+  };
   render() {
     return (
       <div className={"container-fluid"} style={{ padding: "18px 30px" }}>
-        <PluginHeader
+
+        {/* <PluginHeader
           title={"Import Content"}
           description={"Import CSV and RSS-Feed into your Content Types"}
+        >Alo</PluginHeader> */}
+        <Header
+          actions={[
+            /* {
+              label: 'Cancel',
+              disabled: !this.state.analysis,
+              onClick: () => alert('Cancel button clicked'),
+              color: 'cancel',
+              type: 'button',
+            }, */
+            {
+              label: "Run the Import",
+              disabled: !this.state.analysis,
+              onClick: this.onSaveImport,
+              color: 'success',
+              type: 'submit',
+            },
+          ]}
+          title={{
+            label: 'Import Content',
+          }}
+          content="Import CSV and RSS-Feed into your Content Types"
         />
         <HeaderNav
           links={[
