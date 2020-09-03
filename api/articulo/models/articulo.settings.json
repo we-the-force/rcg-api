@@ -34,8 +34,8 @@
     "visitas": {
       "type": "integer"
     },
-    "categorias": {
-      "collection": "categorias",
+    "categoria": {
+      "model": "categorias",
       "via": "articulos"
     },
     "comentarios": {
@@ -55,6 +55,12 @@
       "type": "uid",
       "targetField": "Titulo",
       "required": true
+    },
+    "relevante": {
+      "type": "boolean"
+    },
+    "fin_relevante": {
+      "type": "datetime"
     }
   }
 }

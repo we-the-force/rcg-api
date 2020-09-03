@@ -9,13 +9,12 @@
     "timestamps": true
   },
   "attributes": {
-    "articulos": {
-      "via": "categorias",
-      "collection": "articulo",
-      "dominant": true
-    },
     "nombre": {
       "type": "string"
+    },
+    "articulos": {
+      "via": "categoria",
+      "collection": "articulo"
     }
   }
 }
