@@ -11,6 +11,11 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "@devexpress/dx-react-core": "^2.7.1",
+    "@devexpress/dx-react-scheduler": "^2.7.1",
+    "@devexpress/dx-react-scheduler-material-ui": "^2.7.1",
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
     "content-type-parser": "1.0.2",
     "csv-parse": "4.8.2",
     "get-urls": "9.2.0",
