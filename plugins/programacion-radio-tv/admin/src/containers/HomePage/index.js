@@ -26,6 +26,9 @@ class HomePage extends Component {
         console.log('aqui guardo los datos');
         console.log('deshabilitar antes de que aparezca la tabla');
     }
+    onReady = async () => {
+        console.log('habilitar cuando este lista la tabla');
+    }
     getChannels = async () => {
         try {
             const res = await request("/canal-estacions", {
@@ -119,6 +122,7 @@ class HomePage extends Component {
                     <Row className="row">
                         <ScheduledTable
                             channelId={this.state.selectedChannel}
+                            onReady={this.onReady}
                         />
                     </Row>
                 )}
