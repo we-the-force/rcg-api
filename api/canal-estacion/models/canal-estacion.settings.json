@@ -25,6 +25,9 @@
     },
     "url": {
       "type": "string"
+    },
+    "Radio_TV": {
+      "type": "boolean"
     }
   }
 }

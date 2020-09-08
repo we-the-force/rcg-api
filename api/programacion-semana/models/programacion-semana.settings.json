@@ -14,7 +14,7 @@
       "repeatable": false,
       "component": "horario-component.horario-component"
     },
-    "es_tv": {
+    "Radio_TV": {
       "type": "boolean"
     },
     "fecha_inicio": {

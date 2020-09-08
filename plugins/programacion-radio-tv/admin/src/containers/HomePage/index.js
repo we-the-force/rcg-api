@@ -16,18 +16,15 @@ import { Select, Label, Button } from "@buffetjs/core";
 
 class HomePage extends Component {
     state = {
-        buttonDisable: true,
         selectedChannel: "",
         channels: [],
         scheduleActive: false,
         channelId: "",
+        selectedChannelMedia: null, //false == radio, true == tv
     };
     onSaveSchedule = async () => {
         console.log('aqui guardo los datos');
         console.log('deshabilitar antes de que aparezca la tabla');
-    }
-    onReady = async () => {
-        console.log('habilitar cuando este lista la tabla');
     }
     getChannels = async () => {
         try {
@@ -37,7 +34,8 @@ class HomePage extends Component {
             const channels = res.map(channel => {
                 return {
                     label: channel.nombre, // (name is used for display_name)
-                    value: channel.id // (uid is used for table creations)
+                    value: channel.id, // (uid is used for table creations)
+                    media: channel.Radio_TV
                 };
             });
             return { channels }
@@ -47,11 +45,15 @@ class HomePage extends Component {
         }
         return [];
     };
-    selectChannel = selectedChannel => {
-        this.setState({ selectedChannel });
+    selectChannel = (selectedChannel) => {
+        let value = this.state.channels.find(channel => {
+            return channel.value == selectedChannel;
+        });
+        this.setState({ selectedChannel,
+            selectedChannelMedia: value.media
+        });
     };
     onClickSchedule = () => {
-        console.log('si la tabla ya esta, manda mensaje de se perderan los cambios');
         this.setState({
             scheduleActive: true
         });
@@ -61,7 +63,8 @@ class HomePage extends Component {
             const { channels } = res;
             this.setState({
                 channels,
-                selectedChannel: channels ? channels[0].value : ""
+                selectedChannel: channels ? channels[0].value : "",
+                selectedChannelMedia: channels ? channels[0].media : "",
             });
         });
     }
@@ -71,15 +74,8 @@ class HomePage extends Component {
                 <Header
                     actions={[
                         {
-                            label: 'Cancelar',
-                            disabled: !this.state.buttonDisable,
-                            onClick: this.onSaveSchedule,
-                            color: 'cancel',
-                            type: 'button',
-                        },
-                        {
                             label: "Guardar Programación",
-                            disabled: !this.state.buttonDisable,
+                            disabled: !this.state.scheduleActive,
                             onClick: this.onSaveSchedule,
                             color: 'success',
                             type: 'submit',
@@ -122,7 +118,6 @@ class HomePage extends Component {
                     <Row className="row">
                         <ScheduledTable
                             channelId={this.state.selectedChannel}
-                            onReady={this.onReady}
                         />
                     </Row>
                 )}
