@@ -12,12 +12,26 @@ import {
     DateNavigator,
     DragDropProvider,
     EditRecurrenceMenu,
+    Resources,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { appointments } from './demo/appointments';
 import BasicLayout from '../BasicLayout';
 import Block from "../Block";
 import Row from "../Row";
 
+const Appointment = ({ children, style, ...restProps }) => (
+    <Appointments.Appointment
+        {...restProps}
+        style={{
+            ...style,
+            backgroundColor: '#007bff',
+            borderRadius: '8px',
+            fontSize: '1.2rem',
+        }}
+    >
+        {children}
+    </Appointments.Appointment>
+);
 
 class ScheduleForm extends Component {
     constructor(props) {
@@ -25,7 +39,7 @@ class ScheduleForm extends Component {
 
         this.state = {
             data: appointments,
-            currentDate: new Date('2018-06-27'),
+            currentDate: new Date('2020-10-04'),
 
 
             addedAppointment: {},
@@ -75,7 +89,7 @@ class ScheduleForm extends Component {
 
     render() {
         const {
-            currentDate, data, addedAppointment, appointmentChanges, editingAppointment,
+            currentDate, data, addedAppointment, appointmentChanges, editingAppointment
         } = this.state;
         return (
             <div className={"col-12"}>
@@ -111,13 +125,15 @@ class ScheduleForm extends Component {
                             <DateNavigator />
                             <TodayButton />
                             <EditRecurrenceMenu />
-                            <Appointments />
+                            <Appointments
+                                appointmentComponent={Appointment}
+                            />
                             <AppointmentTooltip
                                 showOpenButton
+                                showCloseButton
                                 showDeleteButton
                             />
-                            <AppointmentForm   
-                                prop1 = "asd"
+                            <AppointmentForm
                                 basicLayoutComponent={BasicLayout}
                             />
                             <DragDropProvider />

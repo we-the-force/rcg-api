@@ -12,10 +12,7 @@ class BasicLayout extends Component {
         super(props);
 
         this.state = {
-            selectedProgram: "",
             programs: [],
-            date_1: null,
-            date_2: null,
         };
     }
 
@@ -23,8 +20,7 @@ class BasicLayout extends Component {
         this.getPrograms().then(res => {
             const { programs } = res;
             this.setState({
-                programs,
-                selectedProgram: programs ? programs[0].id : ""
+                programs
             });
         });
     }
@@ -37,7 +33,7 @@ class BasicLayout extends Component {
             const programs = res.map(program => {
                 return {
                     text: program.Nombre, // (name is used for display_name)
-                    id: program.id // (uid is used for table creations)
+                    id: program.Nombre // (uid is used for table creations)
                 };
             });
             return { programs }
@@ -48,21 +44,12 @@ class BasicLayout extends Component {
         return [];
     };
 
-    selectProgram = selectedProgram => {
-        this.setState({ selectedProgram: selectedProgram });
-    };
-
-    onChangeDate1 = date1 => {
-        this.setState({ date_1: date1 });
-    };
-
-    onChangeDate2 = date2 => {
-        this.setState({ date_2: date2 });
+    onTitleFieldChange = (nextValue) => {
+        this.props.onFieldChange({ title: nextValue});
     };
 
     render() {
-        const { } = this.state;
-        console.log(this.props);
+        const { onFieldChange, appointmentData } = this.props;
         return (
             <div className="d-flex flex-column">
                 <Row className="row d-flex flex-column">
@@ -73,8 +60,8 @@ class BasicLayout extends Component {
                         />
                         <AppointmentForm.Select
                             availableOptions={this.state.programs}
-                            value={this.state.selectedProgram}
-                            onValueChange={e => this.selectProgram(e)}
+                            value={appointmentData.title ? appointmentData.title : ''}
+                            onValueChange={this.onTitleFieldChange}
                             type="filledSelect"
                         />
                     </div>
@@ -82,14 +69,14 @@ class BasicLayout extends Component {
                 <Row className="row d-flex pt-0">
                     <div className="col-6">
                         <AppointmentForm.DateEditor
-                            value={this.state.date_1}
-                            onValueChange={this.onChangeDate1}
+                            value={appointmentData.startDate ? appointmentData.startDate : ''}
+                            onValueChange={onFieldChange}
                         />
                     </div>
                     <div className="col-6">
                         <AppointmentForm.DateEditor
-                            value={this.state.date_2}
-                            onValueChange={this.onChangeDate2}
+                            value={appointmentData.endDate ? appointmentData.endDate : ''}
+                            onValueChange={onFieldChange}
                         />
                     </div>
                 </Row>
