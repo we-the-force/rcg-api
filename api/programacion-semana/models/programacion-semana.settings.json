@@ -23,7 +23,7 @@
     },
     "fecha_inicio": {
       "type": "date",
-      "unique": true
+      "unique": false
     },
     "fecha_final": {
       "type": "date"

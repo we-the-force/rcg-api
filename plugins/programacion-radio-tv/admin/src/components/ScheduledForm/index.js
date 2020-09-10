@@ -137,12 +137,18 @@ class ScheduleForm extends Component {
             let data = get(res, ["programas"], []);
             let date = get(res, ["newCurrentDate"], currentDate);
             let IdUpdate = get(res, ["idProgramacion"], false);
+            let isUpdate = IdUpdate ? true : IdUpdate;
+            let idTable = IdUpdate ? IdUpdate : '';
             this.setState({
                 data: data,
                 currentDate: date,
-                isAnUpdate: IdUpdate ? true : IdUpdate,
-                TableIdUpdate: IdUpdate ? IdUpdate : '',
+                isAnUpdate: isUpdate,
+                TableIdUpdate: idTable,
             });
+            this.props.onprogramacion(data);
+            this.props.onfecha_inicio(moment(date).startOf('isoWeek').format('YYYY-MM-DD'));
+            this.props.onfecha_final(moment(date).endOf('isoWeek').format('YYYY-MM-DD'));
+            this.props.onIsUpdate(isUpdate, idTable)
         });
     };
 
@@ -168,8 +174,8 @@ class ScheduleForm extends Component {
     }
 
     /* commitea los cambios */
-    commitChanges = ({ added, changed, deleted }) => {
-        this.setState((state) => {
+    commitChanges = async ({ added, changed, deleted }) => {
+        await this.setState((state) => {
             let { data } = state;
             if (added) {
                 if (this.validateDates(added, 'added')) {
@@ -192,6 +198,7 @@ class ScheduleForm extends Component {
             }
             return { data };
         });
+        this.props.onprogramacion(this.state.data);
     }
 
     validateDates = (values, type) => {
@@ -217,9 +224,9 @@ class ScheduleForm extends Component {
             let invalid = startDate.isBetween(thisStartDate, thisEndDate, undefined, '[)') ||
                 endDate.isBetween(thisStartDate, thisEndDate, undefined, '(]') ||
                 startDate.isBefore(thisStartDate) && endDate.isAfter(thisEndDate) ||
-                startDate.isBefore(firstDayOfWeek) || 
+                startDate.isBefore(firstDayOfWeek) ||
                 endDate.isBefore(firstDayOfWeek) ||
-                startDate.isAfter(lastDayOfWeek) || 
+                startDate.isAfter(lastDayOfWeek) ||
                 endDate.isAfter(lastDayOfWeek) ||
                 startDate.isAfter(endDate);
             if (invalid) return false; /* si es invalido no pasa la prueba  */
@@ -233,12 +240,18 @@ class ScheduleForm extends Component {
             let data = get(res, ["programas"], []);
             let date = get(res, ["newCurrentDate"], moment().toDate());
             let IdUpdate = get(res, ["idProgramacion"], false);
+            let isUpdate = IdUpdate ? true : IdUpdate;
+            let idTable = IdUpdate ? IdUpdate : '';
             this.setState({
                 data: data,
                 currentDate: date,
-                isAnUpdate: IdUpdate ? true : IdUpdate,
-                TableIdUpdate: IdUpdate ? IdUpdate : '',
+                isAnUpdate: isUpdate,
+                TableIdUpdate: idTable,
             });
+            this.props.onprogramacion(data);
+            this.props.onfecha_inicio(moment(date).startOf('isoWeek').format('YYYY-MM-DD'));
+            this.props.onfecha_final(moment(date).endOf('isoWeek').format('YYYY-MM-DD'));
+            this.props.onIsUpdate(isUpdate, idTable)
         });
     }
 
@@ -347,7 +360,6 @@ class ScheduleForm extends Component {
                             />
                             <Toolbar />
                             <DateNavigator />
-                            <TodayButton />
                             <EditRecurrenceMenu />
                             <Appointments
                                 appointmentComponent={Appointment}
