@@ -19,12 +19,13 @@ import {
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from '@material-ui/core/styles';
-import { appointments } from './demo/appointments';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Overlay from '../Overlay';
 import Block from "../Block";
 import moment from 'moment';
 import Row from "../Row";
+import { get } from "lodash";
+import qs from 'qs';
 
 moment.locale('es');
 
@@ -61,8 +62,8 @@ class ScheduleForm extends Component {
         super(props);
 
         this.state = {
-            data: appointments,/* aqui tengo que traer la programacion */
-            currentDate: new Date('2020-10-04'),/* obtener el dia actual incluir moment */
+            data: [],/* aqui tengo que traer la programacion */
+            currentDate: moment().startOf('isoWeek').toDate(),//new Date(),/* obtener el dia actual incluir moment */
 
             startDayHour: 9,/* cambiar a hora inicial */
             endDayHour: 19,/* cambiar a hora final */
@@ -74,6 +75,9 @@ class ScheduleForm extends Component {
             editingFormVisible: false,/* dicta si el form se ve o no */
             previousAppointment: undefined,
             isNewAppointment: false,
+
+            isAnUpdate: false, /* is an update */
+            TableIdUpdate: '',  /* id de la tabla */
         };
 
         /* manda props a form para llenar datos */
@@ -128,7 +132,19 @@ class ScheduleForm extends Component {
     }
 
     /* actualiza fecha actual */
-    currentDateChange = (currentDate) => { this.setState({ currentDate }); };
+    currentDateChange = (currentDate) => {
+        this.getData(currentDate).then(res => { /* cuando cambian de fecha */
+            let data = get(res, ["programas"], []);
+            let date = get(res, ["newCurrentDate"], currentDate);
+            let IdUpdate = get(res, ["idProgramacion"], false);
+            this.setState({
+                data: data,
+                currentDate: date,
+                isAnUpdate: IdUpdate ? true : IdUpdate,
+                TableIdUpdate: IdUpdate ? IdUpdate : '',
+            });
+        });
+    };
 
     /* añade appointment */
     changeAddedAppointment = (addedAppointment) => {
@@ -156,14 +172,20 @@ class ScheduleForm extends Component {
         this.setState((state) => {
             let { data } = state;
             if (added) {
-                this.validateDates(added);
-                const startingAddedId = data.length > 0 ? data[data.length - 1].id + 1 : 0;
-                data = [...data, { id: startingAddedId, ...added }];
+                if (this.validateDates(added, 'added')) {
+                    const startingAddedId = data.length > 0 ? data[data.length - 1].id + 1 : 0;
+                    data = [...data, { id: startingAddedId, ...added }];
+                } else {
+                    strapi.notification.error(`Horario o fecha invalida`);
+                }
             }
             if (changed) {
-                this.validateDates(changed);
-                data = data.map(appointment => (
-                    changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment));
+                if (this.validateDates(changed, 'changed')) {
+                    data = data.map(appointment => (
+                        changed[appointment.id] ? { ...appointment, ...changed[appointment.id] } : appointment));
+                } else {
+                    strapi.notification.error(`Horario o fecha invalida`);
+                }
             }
             if (deleted !== undefined) {
                 data = data.filter(appointment => appointment.id !== deleted);
@@ -172,37 +194,91 @@ class ScheduleForm extends Component {
         });
     }
 
-    validateDates = values => {
-        console.log(values);
-        this.state.data.every((value, index, array) => {
-            console.log(value);
+    validateDates = (values, type) => {
+        let { data, currentDate } = this.state; /* todos los datos */
+        let firstDayOfWeek = moment(currentDate);
+        let lastDayOfWeek = moment(currentDate).endOf('isoWeek');
+        let startDate = ''; /* declaro variable local inicio de fecha */
+        let endDate = ''; /* declaro variable local fin de fecha */
+        let id = ''; /* id de el elemento cambiado */
+        if (type === 'changed') { /* si el elemento fue modificado obtiene los valores asi */
+            id = Object.keys(values)[0]; /* obtiene id */
+            startDate = moment(values[id].startDate); /* moment de fecha inicio */
+            endDate = moment(values[id].endDate); /* moment de fecha final */
+        } else if (type === 'added') {
+            startDate = moment(values.startDate); /* moment de fecha inicio */
+            endDate = moment(values.endDate); /* moment de fecha final */
+        }
+        return data.every((val) => { /* si todos los valores cumplen con la condicion pasa si no error */
+            if (id == val.id) return true; /* si el elemento es el mismo que en los datos pasa la prueba */
+            let thisStartDate = moment(val.startDate); /* moment inicio del elemento a verificar */
+            let thisEndDate = moment(val.endDate); /* moment final del elemento a modificar */
+            /* estado a cumplir para pasar la prueba */
+            let invalid = startDate.isBetween(thisStartDate, thisEndDate, undefined, '[)') ||
+                endDate.isBetween(thisStartDate, thisEndDate, undefined, '(]') ||
+                startDate.isBefore(thisStartDate) && endDate.isAfter(thisEndDate) ||
+                startDate.isBefore(firstDayOfWeek) || 
+                endDate.isBefore(firstDayOfWeek) ||
+                startDate.isAfter(lastDayOfWeek) || 
+                endDate.isAfter(lastDayOfWeek) ||
+                startDate.isAfter(endDate);
+            if (invalid) return false; /* si es invalido no pasa la prueba  */
+            return true; /* si paso la prueba */
         });
     }
 
     componentDidMount() {
-        /* aqui traigo data */
-        console.log(this.state.currentDate);
-        console.log(this.props.channelId);
-        /* this.getData().then(res => {
-            const { data } = res;
+        /* aqui traigo data al accesar */
+        this.getData(this.state.currentDate).then(res => {
+            let data = get(res, ["programas"], []);
+            let date = get(res, ["newCurrentDate"], moment().toDate());
+            let IdUpdate = get(res, ["idProgramacion"], false);
             this.setState({
-                data
+                data: data,
+                currentDate: date,
+                isAnUpdate: IdUpdate ? true : IdUpdate,
+                TableIdUpdate: IdUpdate ? IdUpdate : '',
             });
-        }); */
+        });
     }
 
-    getPrograms = async () => {
+    getData = async (currentDate) => {
+        let { channelId } = this.props; /* id del canal */
+        let momentDate = moment(currentDate) /* fecha moment del lunes */
+        let date = momentDate.format('YYYY-MM-DD'); /* formato lunes */
         try {
-            const res = await request("/programas", {
+            /* llamada a datos */
+            const res = await request(`/programacion-semanas?fecha_inicio=${date}&canal_estacion.id=${channelId}`, {
                 method: "GET"
             });
-            const programs = res.map(program => {
-                return {
-                    text: program.Nombre, // (name is used for display_name)
-                    id: program.id // (uid is used for table creations)
-                };
-            });
-            return { programs }
+            /* hay datos? */
+            if (res.length === 0) return [];
+
+            /* id de la tabla */
+            let idProgramacion = res[0].id;
+            let days = res[0].programacion; /* array dias de la semana */
+            let index = 0; /* index para saber en que dia voy (comienza en cero para no aumentar con id)*/
+            let programas = []; /* contenedor para los programas (tarjetas) */
+            for (let day in days) { /* recorro los dias de la semana */
+                let dayDate = moment(momentDate).add(index, 'd');/* moment del dia de la semana con id no aumenta*/
+                if (day !== 'id' || days[day].length > 0) { /* si es id o no tiene contenido no lo hace */
+                    let local_programs = days[day].map(val => {  /* recorres las tarjetas dias del programa */
+                        let hora_inicio = moment(dayDate).add(val.hora_inicio); /* moment de la hora inicial del programa */
+                        let hora_final = moment(dayDate).add(val.hora_final); /* moment de la hora final del programa */
+                        return { /* regresa los valores necesarios */
+                            id: val.id,
+                            title: val.programa.Nombre,
+                            startDate: hora_inicio.toDate(),
+                            endDate: hora_final.toDate(),
+                        };
+                    });
+                    programas = programas.concat(local_programs); /* concatena array del dia con el array general */
+                }
+                if (day !== 'id') index++; /* aumenta index */
+            }
+            let newCurrentDate = momentDate.toDate(); /* cambio de moment a date para actualizar el current date a lunex */
+            /* cambiar fecha inicio y final */
+            return { programas, newCurrentDate, idProgramacion } /* regresa array de programas fecha actual y el id en caso de ser update */
         } catch (e) {
             console.log(e);
             strapi.notification.error(`${e}`);
@@ -248,6 +324,7 @@ class ScheduleForm extends Component {
                         <Scheduler
                             data={data}
                             height={800}
+                            firstDayOfWeek={1}
                         >
                             <ViewState
                                 currentDate={currentDate}
@@ -265,8 +342,8 @@ class ScheduleForm extends Component {
                                 onEditingAppointmentChange={this.changeEditingAppointment}
                             />
                             <WeekView
-                                startDayHour={9}
-                                endDayHour={17}
+                                startDayHour={0}
+                                endDayHour={24}
                             />
                             <Toolbar />
                             <DateNavigator />

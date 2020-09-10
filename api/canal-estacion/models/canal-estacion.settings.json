@@ -27,7 +27,8 @@
       "type": "string"
     },
     "Radio_TV": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     }
   }
 }

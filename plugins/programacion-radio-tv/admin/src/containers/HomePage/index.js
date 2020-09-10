@@ -16,15 +16,17 @@ import { Select, Label, Button } from "@buffetjs/core";
 
 class HomePage extends Component {
     state = {
-        selectedChannel: "",
+        selectedChannel: "", //identificador del canal
         channels: [],
         scheduleActive: false,
-        channelId: "",
         selectedChannelMedia: null, //false == radio, true == tv
+        fecha_inicio: '',
+        fecha_final: '',
+        programación: {},
     };
     onSaveSchedule = async () => {
         console.log('aqui guardo los datos');
-        console.log('deshabilitar antes de que aparezca la tabla');
+        console.log(this.state);
     }
     getChannels = async () => {
         try {
@@ -49,14 +51,32 @@ class HomePage extends Component {
         let value = this.state.channels.find(channel => {
             return channel.value == selectedChannel;
         });
-        this.setState({ selectedChannel,
-            selectedChannelMedia: value.media
+        this.setState({
+            selectedChannel,
+            selectedChannelMedia: value.media,
+            scheduleActive: false
         });
     };
     onClickSchedule = () => {
         this.setState({
             scheduleActive: true
         });
+    };
+    onProgramaciónChange = (prog) => {
+        /* this.setState({
+            scheduleActive: true
+        }); */
+    };
+    onFechaInicioChange = (fi) => {
+
+        /* this.setState({
+            scheduleActive: true
+        }); */
+    };
+    onFechaFinalChange = (ff) => {
+        /*  this.setState({
+            scheduleActive: true
+         }); */
     };
     componentDidMount() {
         this.getChannels().then(res => {
@@ -118,6 +138,9 @@ class HomePage extends Component {
                     <Row className="row">
                         <ScheduledTable
                             channelId={this.state.selectedChannel}
+                            onfecha_inicio={this.onFechaInicioChange}
+                            onfecha_final={this.onFechaFinalChange}
+                            programación={this.onProgramaciónChange}
                         />
                     </Row>
                 )}

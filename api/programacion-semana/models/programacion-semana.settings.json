@@ -15,16 +15,18 @@
       "component": "horario-component.horario-component"
     },
     "Radio_TV": {
-      "type": "boolean"
-    },
-    "fecha_inicio": {
-      "type": "date"
-    },
-    "fecha_final": {
-      "type": "date"
+      "type": "boolean",
+      "default": false
     },
     "canal_estacion": {
       "model": "canal-estacion"
+    },
+    "fecha_inicio": {
+      "type": "date",
+      "unique": true
+    },
+    "fecha_final": {
+      "type": "date"
     }
   }
 }
