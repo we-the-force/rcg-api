@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "banners",
+  "info": {
+    "name": "banner"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "articulo": {
+      "unique": true,
+      "model": "articulo"
+    },
+    "posicion": {
+      "type": "integer",
+      "unique": true,
+      "required": true,
+      "max": 10,
+      "min": 1
+    }
+  }
+}

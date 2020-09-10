@@ -42,11 +42,6 @@
       "collection": "comentario",
       "via": "articulo"
     },
-    "tags": {
-      "type": "component",
-      "repeatable": true,
-      "component": "tags.tags"
-    },
     "autor": {
       "model": "autor",
       "via": "articulos"
@@ -61,6 +56,11 @@
     },
     "fin_relevante": {
       "type": "datetime"
+    },
+    "tags": {
+      "collection": "tag",
+      "via": "articulos",
+      "dominant": true
     }
   }
 }
