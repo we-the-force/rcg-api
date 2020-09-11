@@ -148,7 +148,7 @@ class ScheduleForm extends Component {
             this.props.onprogramacion(data);
             this.props.onfecha_inicio(moment(date).startOf('isoWeek').format('YYYY-MM-DD'));
             this.props.onfecha_final(moment(date).endOf('isoWeek').format('YYYY-MM-DD'));
-            this.props.onIsUpdate(isUpdate, idTable)
+            this.props.onIsUpdate(isUpdate, idTable);
         });
     };
 
@@ -203,8 +203,8 @@ class ScheduleForm extends Component {
 
     validateDates = (values, type) => {
         let { data, currentDate } = this.state; /* todos los datos */
-        let firstDayOfWeek = moment(currentDate);
-        let lastDayOfWeek = moment(currentDate).endOf('isoWeek');
+        let firstDayOfWeek = moment(currentDate).startOf('isoWeek');
+        let lastDayOfWeek = moment(currentDate).endOf('isoWeek').add(1, 's');
         let startDate = ''; /* declaro variable local inicio de fecha */
         let endDate = ''; /* declaro variable local fin de fecha */
         let id = ''; /* id de el elemento cambiado */
@@ -216,22 +216,23 @@ class ScheduleForm extends Component {
             startDate = moment(values.startDate); /* moment de fecha inicio */
             endDate = moment(values.endDate); /* moment de fecha final */
         }
-        return data.every((val) => { /* si todos los valores cumplen con la condicion pasa si no error */
+        let data_valid = !(startDate.isBefore(firstDayOfWeek) ||
+            endDate.isBefore(firstDayOfWeek) ||
+            startDate.isAfter(lastDayOfWeek) ||
+            endDate.isAfter(lastDayOfWeek) ||
+            startDate.isAfter(endDate));
+        let array_valid = data.every((val) => { /* si todos los valores cumplen con la condicion pasa si no error */
             if (id == val.id) return true; /* si el elemento es el mismo que en los datos pasa la prueba */
             let thisStartDate = moment(val.startDate); /* moment inicio del elemento a verificar */
             let thisEndDate = moment(val.endDate); /* moment final del elemento a modificar */
             /* estado a cumplir para pasar la prueba */
             let invalid = startDate.isBetween(thisStartDate, thisEndDate, undefined, '[)') ||
                 endDate.isBetween(thisStartDate, thisEndDate, undefined, '(]') ||
-                startDate.isBefore(thisStartDate) && endDate.isAfter(thisEndDate) ||
-                startDate.isBefore(firstDayOfWeek) ||
-                endDate.isBefore(firstDayOfWeek) ||
-                startDate.isAfter(lastDayOfWeek) ||
-                endDate.isAfter(lastDayOfWeek) ||
-                startDate.isAfter(endDate);
+                startDate.isBefore(thisStartDate) && endDate.isAfter(thisEndDate)
             if (invalid) return false; /* si es invalido no pasa la prueba  */
             return true; /* si paso la prueba */
         });
+        return data_valid && array_valid;
     }
 
     componentDidMount() {
@@ -251,7 +252,6 @@ class ScheduleForm extends Component {
             this.props.onprogramacion(data);
             this.props.onfecha_inicio(moment(date).startOf('isoWeek').format('YYYY-MM-DD'));
             this.props.onfecha_final(moment(date).endOf('isoWeek').format('YYYY-MM-DD'));
-            this.props.onIsUpdate(isUpdate, idTable)
         });
     }
 
