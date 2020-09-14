@@ -93,7 +93,6 @@ class HomePage extends Component {
                     "programacion": programacion
                 }
                 let response = '';
-                console.log(this.state.idTable);
                 if(!this.state.isUpdate){
                     response = await request("/programacion-semanas", {
                         method: "POST",
@@ -106,7 +105,7 @@ class HomePage extends Component {
                     });
                 }
 
-                this.setState({ uploading: false }, () => {
+                this.setState({ uploading: false, isUpdate: true, idTable: response.id}, () => {
                     strapi.notification.success(`Schedule added Successfully`);
                 });
             } catch (e) {
