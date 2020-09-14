@@ -252,6 +252,7 @@ class ScheduleForm extends Component {
             this.props.onprogramacion(data);
             this.props.onfecha_inicio(moment(date).startOf('isoWeek').format('YYYY-MM-DD'));
             this.props.onfecha_final(moment(date).endOf('isoWeek').format('YYYY-MM-DD'));
+            this.props.onIsUpdate(isUpdate, idTable);
         });
     }
 

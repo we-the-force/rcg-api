@@ -74,8 +74,8 @@ class HomePage extends Component {
                             return prog.text === el.title
                         }).id;
                         return {
-                            "hora_inicio": fechaInicio.format("kk:mm:ss.SSS"),
-                            "hora_final": fechaFinal.format("kk:mm:ss.SSS"),
+                            "hora_inicio": fechaInicio.format("HH:mm:ss.SSS"),
+                            "hora_final": fechaFinal.format("HH:mm:ss.SSS"),
                             "programa": {
                                 "id": programId
                             }
@@ -93,8 +93,8 @@ class HomePage extends Component {
                     "programacion": programacion
                 }
                 let response = '';
+                console.log(this.state.idTable);
                 if(!this.state.isUpdate){
-                    console.log(table);
                     response = await request("/programacion-semanas", {
                         method: "POST",
                         body: table
