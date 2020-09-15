@@ -13,7 +13,7 @@
       "type": "string"
     },
     "logo": {
-      "collection": "file",
+      "model": "file",
       "via": "related",
       "allowedTypes": [
         "images",
@@ -23,12 +23,20 @@
       "plugin": "upload",
       "required": false
     },
-    "url": {
+    "source_url": {
       "type": "string"
     },
     "Radio_TV": {
       "type": "boolean",
       "default": false
+    },
+    "url": {
+      "type": "uid",
+      "targetField": "nombre",
+      "required": true
+    },
+    "descripcion": {
+      "type": "text"
     }
   }
 }
