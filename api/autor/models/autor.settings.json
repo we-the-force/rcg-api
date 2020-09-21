@@ -30,8 +30,17 @@
       "type": "text"
     },
     "articulos": {
-      "via": "autor",
-      "collection": "articulo"
+      "collection": "articulo",
+      "via": "autor"
+    },
+    "twitter_link": {
+      "type": "string"
+    },
+    "instagram_link": {
+      "type": "string"
+    },
+    "facebook_link": {
+      "type": "string"
     }
   }
 }

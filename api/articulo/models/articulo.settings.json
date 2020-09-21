@@ -43,8 +43,8 @@
       "via": "articulo"
     },
     "autor": {
-      "model": "autor",
-      "via": "articulos"
+      "via": "articulos",
+      "model": "autor"
     },
     "url": {
       "type": "uid",
