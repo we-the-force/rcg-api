@@ -10,19 +10,25 @@
   },
   "attributes": {
     "nombre": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "direccion": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "ciudad": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "telefono": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "numero_calca": {
-      "type": "string"
+      "type": "string",
+      "unique": true,
+      "required": true
     }
   }
 }
