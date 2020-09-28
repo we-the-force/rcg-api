@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/preguntas-frecuentes",
+      "handler": "preguntas-frecuentes.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/preguntas-frecuentes",
+      "handler": "preguntas-frecuentes.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/preguntas-frecuentes",
+      "handler": "preguntas-frecuentes.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
