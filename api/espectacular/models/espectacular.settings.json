@@ -9,10 +9,12 @@
     "timestamps": true
   },
   "attributes": {
-    "nombre": {
-      "type": "string"
+    "id_espectacular": {
+      "type": "string",
+      "unique": true,
+      "required": true
     },
-    "imagen": {
+    "cara1": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
@@ -23,7 +25,7 @@
       "plugin": "upload",
       "required": false
     },
-    "direccion": {
+    "lugar": {
       "type": "text"
     },
     "zona": {
@@ -35,6 +37,17 @@
         "poniente",
         "centro"
       ]
+    },
+    "cara2": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }
