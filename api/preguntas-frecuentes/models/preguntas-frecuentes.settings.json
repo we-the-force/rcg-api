@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "preguntas_frecuentes",
+  "info": {
+    "name": "preguntas frecuentes"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "preguntas": {
+      "type": "component",
+      "repeatable": true,
+      "component": "pregunta-frecuente.preguntas"
+    }
+  }
+}
