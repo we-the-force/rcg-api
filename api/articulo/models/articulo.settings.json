@@ -43,8 +43,8 @@
       "via": "articulo"
     },
     "autor": {
-      "via": "articulos",
-      "model": "autor"
+      "model": "autor",
+      "via": "articulos"
     },
     "url": {
       "type": "uid",
@@ -53,9 +53,6 @@
     },
     "relevante": {
       "type": "boolean"
-    },
-    "fin_relevante": {
-      "type": "datetime"
     },
     "tags": {
       "collection": "tag",
