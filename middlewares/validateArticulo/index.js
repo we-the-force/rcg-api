@@ -4,9 +4,9 @@ module.exports = strapi => {
             strapi.app.use(async (ctx, next) => {
                 if (ctx.method == 'POST' || ctx.method == "PUT")
                 {
-                    // console.log("\r\nSoy un url:\r\n", ctx.url);
+                    console.log("\r\nSoy un url:\r\n", ctx.url);
                     let urlThings = (ctx.url).split("/");
-                    // console.log("Cosas del url:\r\n", urlThings);
+                    console.log("Cosas del url:\r\n", urlThings);
                     if (urlThings.length === 4)
                     {
                         if (urlThings[1] == "content-manager" && urlThings[3] == "application::articulo.articulo")
@@ -18,9 +18,9 @@ module.exports = strapi => {
                             }
 
                             let body = JSON.parse(ctx.request.body.data);
-                            // console.log("Body:");
-                            // console.log(body);
-                            // console.log(body.cover);
+                            console.log("Body:");
+                            console.log(body);
+                            console.log(body.cover);
 
                             if (body.cover === undefined || body.cover === null)
                             {
