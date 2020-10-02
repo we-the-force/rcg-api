@@ -4,13 +4,15 @@ module.exports = strapi => {
             strapi.app.use(async (ctx, next) => {
                 if (ctx.method == 'POST' || ctx.method == "PUT")
                 {
+                    console.log("Soy un url:\r\n", ctx.url);
                     let urlThings = (ctx.url).split("/");
-                    if (urlThings.length > 2)
+                    console.log("Cosas del url:\r\n", urlThings);
+                    if (urlThings.length === 5)
                     {
-                        if (urlThings[3] == "application::articulo.articulo")
+                        if (urlThings[1] == "content-manager" && urlThings[3] == "application::articulo.articulo")
                         {
                             let body = JSON.parse(ctx.request.body.data);
-                            // console.log(body);
+                            console.log("Body:\r\n", body);
 
                             // let lmao = strapi.plugins.upload.services['image-manipulation'].getDimensions();
                             let coverData = await strapi.plugins.upload.services.upload.fetch({id: body.cover});
@@ -22,6 +24,14 @@ module.exports = strapi => {
                             if (coverData.width < 1280 || coverData.height < 720)
                             {
                                 return ctx.throw(400, ' AAAAAAAAAAAAAAAAAAAH');
+                            }
+                            if (body.autor === null)
+                            {
+                                return ctx.throw(400, ' El autor es nulo');
+                            }
+                            if (body.categoria === null)
+                            {
+                                return ctx.throw(400, ' La categoria es nula');
                             }
                         }
                     }

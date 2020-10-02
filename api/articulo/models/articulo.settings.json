@@ -30,7 +30,8 @@
       "type": "date"
     },
     "visitas": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
     },
     "categoria": {
       "model": "categorias",
