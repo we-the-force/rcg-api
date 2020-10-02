@@ -7,7 +7,7 @@ module.exports = strapi => {
                     console.log("\r\nSoy un url:\r\n", ctx.url);
                     let urlThings = (ctx.url).split("/");
                     console.log("Cosas del url:\r\n", urlThings);
-                    if (urlThings.length === 4)
+                    if (urlThings.length >= 4)
                     {
                         if (urlThings[1] == "content-manager" && urlThings[3] == "application::articulo.articulo")
                         {
