@@ -65,7 +65,7 @@ module.exports = strapi => {
                                 // alert(`Ocurrio un error publicando el articulo: \r\n${result.errorMessage}`);
                                 return ctx.throw(400, `Error: ${result.errorMessage}`);
                             }
-                            return ctx.throw(400, 'Caiese');
+                            // return ctx.throw(400, 'Caiese');
                         }
                     }
                     else
