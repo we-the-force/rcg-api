@@ -10,7 +10,7 @@ module.exports = {
         strapi.plugins['email'].services.email.send({
             to: "erfamel@gmail.com",
             from: "about@wetheforce.com",
-            subject: requestObject.subject,
+            subject: `Intento de Contacto [${requestObject.subject}]`,
             text: requestObject.subject,
             html: `<h2>Alguien se ha intentado poner en contacto con ustedes</h2>
             <br>

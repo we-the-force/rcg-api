@@ -18,9 +18,7 @@
       "model": "file",
       "via": "related",
       "allowedTypes": [
-        "images",
-        "files",
-        "videos"
+        "images"
       ],
       "plugin": "upload",
       "required": false
@@ -32,7 +30,8 @@
       "type": "date"
     },
     "visitas": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0
     },
     "categoria": {
       "model": "categorias",
@@ -43,8 +42,8 @@
       "via": "articulo"
     },
     "autor": {
-      "via": "articulos",
-      "model": "autor"
+      "model": "autor",
+      "via": "articulos"
     },
     "url": {
       "type": "uid",
