@@ -7,7 +7,7 @@ module.exports = strapi => {
                     console.log("Soy un url:\r\n", ctx.url);
                     let urlThings = (ctx.url).split("/");
                     console.log("Cosas del url:\r\n", urlThings);
-                    if (urlThings.length === 5)
+                    if (urlThings.length >= 4)
                     {
                         if (urlThings[1] == "content-manager" && urlThings[3] == "application::articulo.articulo")
                         {
@@ -33,7 +33,16 @@ module.exports = strapi => {
                             {
                                 return ctx.throw(400, ' La categoria es nula');
                             }
+                            console.log("Pos si jalo chale: ", coverData);
                         }
+                        else 
+                        {
+                            console.log("No era el chavo este chale: ", ctx.url);
+                        }
+                    }
+                    else
+                    {
+                        console.log("No era length de 5 que rollo: ", urlThings);
                     }
                 }
                 await next();
