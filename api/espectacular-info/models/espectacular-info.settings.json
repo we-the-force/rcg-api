@@ -9,14 +9,33 @@
     "timestamps": true
   },
   "attributes": {
-    "quienes_somos": {
-      "type": "text"
-    },
     "porque_nosotros": {
       "type": "text"
     },
     "nosotros": {
       "type": "richtext"
+    },
+    "NosotrosImagen": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "PorqueNosotrosImagen": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
     }
   }
 }

@@ -18,9 +18,9 @@ module.exports = strapi => {
                             }
 
                             let body = JSON.parse(ctx.request.body.data);
-                            console.log("Body:");
-                            console.log(body);
-                            console.log(body.cover);
+                            // console.log("Body:");
+                            // console.log(body);
+                            // console.log(body.cover);
 
                             if (body.cover === undefined || body.cover === null)
                             {
@@ -42,35 +42,34 @@ module.exports = strapi => {
                                 {
                                     result.valid = false;
                                     result.errors++;
-                                    result.errorMessage += `La resolucion de la imagen no cumple los requisitos minimos (tiene [${coverData.width}x${coverData.height}] y se requiere [1280x720])`; 
-                                    // result.errorMessage = result.errors > 0 ? "" : ""; 
+                                    result.errorMessage += `La resolucion de la imagen no cumple los requisitos minimos (tiene [${coverData.width}x${coverData.height}] y se requiere [1280x720])`;
+                                    // result.errorMessage = result.errors > 0 ? "" : "";
                                 }
                             }
                             if (body.autor === undefined || body.autor === null)
                             {
                                 result.valid = false;
                                 result.errors++;
-                                result.errorMessage += result.errors > 0 ? ", el articulo debe tener un autor relacionado" : "El articulo debe tener un autor relacionado"; 
+                                result.errorMessage += result.errors > 0 ? ", el articulo debe tener un autor relacionado" : "El articulo debe tener un autor relacionado";
                             }
                             if (body.categoria === undefined || body.categoria === null)
                             {
                                 result.valid = false;
                                 result.errors++;
-                                result.errorMessage += result.errors > 0 ? ", el articulo debe tener una categoria relacionada" : "El articulo debe tener una categoria relacionada"; 
+                                result.errorMessage += result.errors > 0 ? ", el articulo debe tener una categoria relacionada" : "El articulo debe tener una categoria relacionada";
                             }
 
                             if (!result.valid)
                             {
-                                console.log(`Ocurrio un error publicando el articulo: \r\n${result.errorMessage}`);
+                                // console.log(`Ocurrio un error publicando el articulo: \r\n${result.errorMessage}`);
                                 // alert(`Ocurrio un error publicando el articulo: \r\n${result.errorMessage}`);
+                                // strapi.notification.error(`Ocurrio un error publicando el articulo: \r\n${result.errorMessage}`);
+                                // return "";
                                 return ctx.throw(400, `Error: ${result.errorMessage}`);
+                                // throw new Error(`Ocurrio un error publicando el articulo: \r\n${result.errorMessage}`);
+
                             }
-                            // return ctx.throw(400, 'Caiese');
                         }
-                    }
-                    else
-                    {
-                        console.log("Ah chale, no era la wea esta y asi\r\n", ctx.url);
                     }
                 }
                 await next();
