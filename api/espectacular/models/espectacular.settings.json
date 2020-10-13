@@ -18,12 +18,12 @@
       "model": "file",
       "via": "related",
       "allowedTypes": [
-        "images",
         "files",
+        "images",
         "videos"
       ],
       "plugin": "upload",
-      "required": false
+      "required": true
     },
     "lugar": {
       "type": "text"
@@ -36,18 +36,19 @@
         "oriente",
         "poniente",
         "centro"
-      ]
+      ],
+      "required": true
     },
     "cara2": {
       "model": "file",
       "via": "related",
       "allowedTypes": [
-        "images",
         "files",
+        "images",
         "videos"
       ],
       "plugin": "upload",
-      "required": false
+      "required": true
     }
   }
 }
