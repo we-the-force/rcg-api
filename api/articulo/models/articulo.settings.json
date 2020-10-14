@@ -37,10 +37,6 @@
       "model": "categorias",
       "via": "articulos"
     },
-    "comentarios": {
-      "collection": "comentario",
-      "via": "articulo"
-    },
     "autor": {
       "model": "autor",
       "via": "articulos"
