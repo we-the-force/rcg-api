@@ -29,18 +29,10 @@
       "plugin": "upload",
       "required": false
     },
-    "video": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false
-    },
     "whatsapp": {
+      "type": "string"
+    },
+    "video_source": {
       "type": "string"
     }
   }
