@@ -13,38 +13,61 @@ module.exports = strapi => {
                         {
                             if (ctx.request.body.data != undefined)
                             {
+                                let result = {
+                                    valid: true,
+                                    errorMessage: "",
+                                    errors: 0
+                                }
+    
                                 let body = JSON.parse(ctx.request.body.data);
     
-                                // let lmao = strapi.plugins.upload.services['image-manipulation'].getDimensions();
-                                let coverData = await strapi.plugins.upload.services.upload.fetch({id: body.cover});
-                                coverData = {
-                                    width: coverData.width,
-                                    height: coverData.height
-                                };
-                                console.log("Strapi.plugins\r\n", coverData);
-                                if (coverData.width < 1280 || coverData.height < 720)
+                                if (body.cover === undefined || body.cover === null)
                                 {
-                                    return ctx.throw(400, ' AAAAAAAAAAAAAAAAAAAH');
+                                    result.valid = false;
+                                    result.errors++;
+                                    result.errorMessage += "Tener cover es obligatorio";
                                 }
-                                if (body.autor === null)
+                                else
                                 {
-                                    return ctx.throw(400, ' El autor es nulo');
+                                    let coverData = await strapi.plugins.upload.services.upload.fetch({id: body.cover});
+                                    coverData = {
+                                        width: coverData.width,
+                                        height: coverData.height
+                                    };
+                                    console.log("coverData: ", coverData);
+    
+                                    if (coverData.width < 1280 || coverData.height < 720)
+                                    {
+                                        result.valid = false;
+                                        result.errors++;
+                                        result.errorMessage += `La resolucion de la imagen no cumple los requisitos minimos (tiene [${coverData.width}x${coverData.height}] y se requiere [1280x720])`;
+                                    }
                                 }
-                                if (body.categoria === null)
+                                if (body.autor === undefined || body.autor === null)
                                 {
-                                    return ctx.throw(400, ' La categoria es nula');
+                                    result.valid = false;
+                                    result.errors++;
+                                    result.errorMessage += result.errors > 0 ? ", el articulo debe tener un autor relacionado" : "El articulo debe tener un autor relacionado";
                                 }
-                                console.log("Pos si jalo chale: ", coverData);
+                                if (body.categoria === undefined || body.categoria === null)
+                                {
+                                    result.valid = false;
+                                    result.errors++;
+                                    result.errorMessage += result.errors > 0 ? ", el articulo debe tener una categoria relacionada" : "El articulo debe tener una categoria relacionada";
+                                }
+    
+                                if (!result.valid)
+                                {
+                                    // console.log(`Ocurrio un error publicando el articulo: \r\n${result.errorMessage}`);
+                                    // alert(`Ocurrio un error publicando el articulo: \r\n${result.errorMessage}`);
+                                    // strapi.notification.error(`Ocurrio un error publicando el articulo: \r\n${result.errorMessage}`);
+                                    // return "";
+                                    return ctx.throw(400, `Error: ${result.errorMessage}`);
+                                    // throw new Error(`Ocurrio un error publicando el articulo: \r\n${result.errorMessage}`);
+    
+                                }
                             }
                         }
-                        else 
-                        {
-                            console.log("No era el chavo este chale: ", ctx.url);
-                        }
-                    }
-                    else
-                    {
-                        console.log("No era length de 5 que rollo: ", urlThings);
                     }
                 }
                 await next();
