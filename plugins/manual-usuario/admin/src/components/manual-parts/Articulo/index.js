@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Block from "../../Block";
+import Scroll from "../../Scroll";
 import "./style.css";
 import "../../general-style.css";
 
@@ -12,8 +13,13 @@ class ArticuloPanel extends Component{
             <div  id="articulo-block" name="articulo-block">
                 <Block title="Articulo" className="Articulo-Block">
                     <h2><b className="requirement-title">Requerimientos</b></h2>
-                    <a className="requirement-element">Autores</a>
-                    <a className="requirement-element">Categorias</a><br/>
+                    <Scroll type="id" element="autor-block" offset={-85}>
+                        <a className="requirement-element">Autores</a>
+                    </Scroll>
+                    <Scroll type="id" element="categoria-block" offset={-85}>
+                        <a className="requirement-element">Categorias</a>
+                    </Scroll>
+                    <br/>
                     <h3>Pasos</h3>
                     <ol>
                         <li>En el sidebar izquierdo, seleccionas "Articulos" en "COLLECTION TYPES"</li>
@@ -64,13 +70,14 @@ class ArticuloPanel extends Component{
                                 </li>
                             </ul>
                         </li>
+                        <li>Presionas "Save"</li>
                     </ol>
                     <h3>**Pueden ocurrir errores si:</h3>
                     <ul>
                         <li>Las dimensiones del cover son menores a 1280x720 pixeles</li>
                         <li>El articulo no tiene autor asignado</li>
                         <li>El articulo no tiene categoria asignada</li>
-                        <li>Ek yrk ya esta siendo usado por otro articulo (no deberia suceder a menos que haya sido cambiado manualmente)</li>
+                        <li>El url ya esta siendo usado por otro articulo (no deberia suceder a menos que haya sido cambiado manualmente)</li>
                     </ul>
                 </Block>
             </div>

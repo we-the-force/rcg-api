@@ -7,6 +7,8 @@
 import React, { memo, Component } from 'react';
 import ContentIndex from "../../components/manual-parts/ContentIndex";
 import Articulo from "../../components/manual-parts/Articulo";
+import Autor from "../../components/manual-parts/Autor";
+import Banner from "../../components/manual-parts/Banner";
 import Block from "../../components/Block";
 import Scroll from "../../components/Scroll.js";
 import smoothscroll from 'smoothscroll-polyfill';
@@ -29,11 +31,8 @@ class HomePage extends Component {
                 <h1 className="Home-Title">Manual de Usuario</h1>
                 <ContentIndex/>
                 <Articulo/>
-                <ContentIndex/>
-                <ContentIndex/>
-                <ContentIndex/>
-                <ContentIndex/>
-                <ContentIndex/>
+                <Autor/>
+                <Banner/>
             </div>
         );
     };
