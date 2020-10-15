@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Block from "../../Block";
+import Scroll from "../../Scroll";
 
 import "./style.css";
 
@@ -13,7 +14,9 @@ class ContentIndex extends Component{
             <Block title="Indice">
                 <div>
                     {/* <h2>Indice</h2> */}
-                    <h3><a href="#articulo-block" className="Index-Element">   Articulos</a>                                   </h3>
+                    <Scroll type="id" element="articulo-block" offset={-85}>
+                        <h3><a href="#articulo-block" className="Index-Element">   Articulos</a>                                   </h3>
+                    </Scroll>
                     <h3><a href="https://www.google.com" className="Index-Element">   Autores</a>                                     </h3>
                     <h3><a href="https://www.google.com" className="Index-Element">   Banners</a>                                     </h3>
                     <h3><a href="https://www.google.com" className="Index-Element">   Calcas</a>                                      </h3>

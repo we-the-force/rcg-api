@@ -2,5 +2,8 @@
     color: red;
 }
 .requirement-element {
-    padding-left: 20px;
+    margin-left: 20px;
+}
+.step-element {
+    margin-left: 20px;
 }
