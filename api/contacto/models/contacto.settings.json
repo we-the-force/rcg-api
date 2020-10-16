@@ -18,7 +18,7 @@
     "whatsapp": {
       "type": "string"
     },
-    "video": {
+    "video_source": {
       "type": "string"
     }
   }
