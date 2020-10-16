@@ -17,6 +17,12 @@ import Espectaculares from "../../components/manual-parts/Espectaculares";
 import Programacion from "../../components/manual-parts/Programacion";
 import Programas from "../../components/manual-parts/Programas";
 import Tags from "../../components/manual-parts/Tags";
+import AvisoPrivacidad from "../../components/manual-parts/AvisoPrivacidad";
+import Contacto from "../../components/manual-parts/Contacto";
+import Replica from "../../components/manual-parts/Replica";
+import InfoEspec from "../../components/manual-parts/InfoEspec";
+import Nosotros from "../../components/manual-parts/Nosotros";
+import FAQ from "../../components/manual-parts/FAQ";
 import Block from "../../components/Block";
 import Scroll from "../../components/Scroll.js";
 import smoothscroll from 'smoothscroll-polyfill';
@@ -29,6 +35,8 @@ import smoothscroll from 'smoothscroll-polyfill';
 import moment from 'moment';
 // import { Select, Label, Button } from "@buffetjs/core";
 // import { LoadingIndicator } from "strapi-helper-plugin";
+
+import "./style.css";
 
 moment.locale('es');
 
@@ -49,6 +57,13 @@ class HomePage extends Component {
                 <Programacion/>
                 <Programas/>
                 <Tags/>
+                <div className="divider"></div>
+                <AvisoPrivacidad/>
+                <Contacto/>
+                <Replica/>
+                <InfoEspec/>
+                <Nosotros/>
+                <FAQ/>
             </div>
         );
     };
