@@ -15,6 +15,8 @@ import Categorias from "../../components/manual-parts/Categorias";
 import EspectacularClientes from "../../components/manual-parts/EspectacularClientes";
 import Espectaculares from "../../components/manual-parts/Espectaculares";
 import Programacion from "../../components/manual-parts/Programacion";
+import Programas from "../../components/manual-parts/Programas";
+import Tags from "../../components/manual-parts/Tags";
 import Block from "../../components/Block";
 import Scroll from "../../components/Scroll.js";
 import smoothscroll from 'smoothscroll-polyfill';
@@ -45,6 +47,8 @@ class HomePage extends Component {
                 <EspectacularClientes/>
                 <Espectaculares/>
                 <Programacion/>
+                <Programas/>
+                <Tags/>
             </div>
         );
     };

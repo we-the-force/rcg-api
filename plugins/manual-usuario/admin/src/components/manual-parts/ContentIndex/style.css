@@ -1,3 +1,6 @@
 .Index-Element {
     margin-left: 20px;
 }
+.index-static {
+    border-top: 8px solid #bbb;
+}

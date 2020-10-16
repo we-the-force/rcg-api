@@ -45,7 +45,27 @@ class ContentIndex extends Component{
                         <h3><a href="" className="Index-Element">   Programas</a>                                   </h3>
                     </Scroll>
                     <Scroll type="id" element="tags-block" offset={-85}>
-                        <h3><a href="" className="Index-Element">   Tags</a>                                        </h3>
+                        <h3><a href="" className="Index-Element">Tags</a></h3>
+                    </Scroll>
+                </div>
+                <div className="index-static">
+                    <Scroll type="id" element="privacidad-block" offset={-85}>
+                        <h3><a href="" className="Index-Element">Aviso de Privacidad</a></h3>
+                    </Scroll>
+                    <Scroll type="id" element="contacto-block" offset={-85}>
+                        <h3><a href="" className="Index-Element">Contacto</a></h3>
+                    </Scroll>
+                    <Scroll type="id" element="replica-block" offset={-85}>
+                        <h3><a href="" className="Index-Element">Derecho de Replica</a></h3>
+                    </Scroll>
+                    <Scroll type="id" element="info-espec-block" offset={-85}>
+                        <h3><a href="" className="Index-Element">Info de Espectaculares</a></h3>
+                    </Scroll>
+                    <Scroll type="id" element="about-us-block" offset={-85}>
+                        <h3><a href="" className="Index-Element">Nosotros</a></h3>
+                    </Scroll>
+                    <Scroll type="id" element="faq-block" offset={-85}>
+                        <h3><a href="" className="Index-Element">Preguntas Frecuentes</a></h3>
                     </Scroll>
                 </div>
             </Block>
