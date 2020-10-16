@@ -9,6 +9,9 @@ import ContentIndex from "../../components/manual-parts/ContentIndex";
 import Articulo from "../../components/manual-parts/Articulo";
 import Autor from "../../components/manual-parts/Autor";
 import Banner from "../../components/manual-parts/Banner";
+import Calca from "../../components/manual-parts/Calca";
+import CanalEstacion from "../../components/manual-parts/CanalEstacion";
+import CanalEstacion from "../../components/manual-parts/Categorias";
 import Block from "../../components/Block";
 import Scroll from "../../components/Scroll.js";
 import smoothscroll from 'smoothscroll-polyfill';
@@ -33,6 +36,9 @@ class HomePage extends Component {
                 <Articulo/>
                 <Autor/>
                 <Banner/>
+                <Calca/>
+                <CanalEstacion/>
+                <Categorias/>
             </div>
         );
     };
