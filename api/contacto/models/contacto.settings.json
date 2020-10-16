@@ -9,25 +9,11 @@
     "timestamps": true
   },
   "attributes": {
-    "direccion": {
-      "type": "text"
-    },
     "telefono": {
       "type": "string"
     },
     "correo": {
       "type": "email"
-    },
-    "img": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false
     },
     "whatsapp": {
       "type": "string"
