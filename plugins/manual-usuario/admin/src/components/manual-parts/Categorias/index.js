@@ -10,7 +10,7 @@ class CategoriaPanel extends Component{
     }
     render() {
         return (
-            <div  id="categorias-block" name="categorias-block">
+            <div  id="categoria-block" name="categoria-block">
                 <Block title="Categorias" className="Categorias-Block">
                     <h3>Pasos</h3>
                     <ol>

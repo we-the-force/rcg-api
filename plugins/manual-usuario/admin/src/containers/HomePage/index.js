@@ -11,7 +11,10 @@ import Autor from "../../components/manual-parts/Autor";
 import Banner from "../../components/manual-parts/Banner";
 import Calca from "../../components/manual-parts/Calca";
 import CanalEstacion from "../../components/manual-parts/CanalEstacion";
-import CanalEstacion from "../../components/manual-parts/Categorias";
+import Categorias from "../../components/manual-parts/Categorias";
+import EspectacularClientes from "../../components/manual-parts/EspectacularClientes";
+import Espectaculares from "../../components/manual-parts/Espectaculares";
+import Programacion from "../../components/manual-parts/Programacion";
 import Block from "../../components/Block";
 import Scroll from "../../components/Scroll.js";
 import smoothscroll from 'smoothscroll-polyfill';
@@ -39,6 +42,9 @@ class HomePage extends Component {
                 <Calca/>
                 <CanalEstacion/>
                 <Categorias/>
+                <EspectacularClientes/>
+                <Espectaculares/>
+                <Programacion/>
             </div>
         );
     };
