@@ -7,7 +7,7 @@ import "./style.css";
 
 function ContentIndex() {
     return (
-        <Block title="Indice" className="indice">
+        <Block title="Índice" className="indice">
             <div>
                 <Scroll type="id" element="articulo-block" offset={-85}>
                     <a href="#articulo-block" className="Index-Element">
@@ -15,7 +15,7 @@ function ContentIndex() {
                             <p className="numero">1</p>
                         </div>
                         <div className="container">
-                            <p>Articulos</p>
+                            <p>Artículos</p>
                         </div>
                     </a>
                 </Scroll>
@@ -65,7 +65,7 @@ function ContentIndex() {
                             <p className="numero">6</p>
                         </div>
                         <div className="container">
-                            <p>Categorias</p>
+                            <p>Categorías</p>
                         </div>
                     </a>
                 </Scroll>
@@ -99,7 +99,9 @@ function ContentIndex() {
                             <p className="numero">9</p>
                         </div>
                         <div className="container">
-                            <p>Programacion Radio-TV (ProgramacionSemanas)</p>
+                            <p> 
+                                Programación Radio-TV (Programación Semanas)
+                            </p>
                         </div>
                     </a>
                 </Scroll>
@@ -151,7 +153,7 @@ function ContentIndex() {
                             <p className="numero">14</p>
                         </div>
                         <div className="container">
-                            <p>Derecho de Replica</p>
+                            <p>Derecho de Réplica</p>
                         </div>
                     </a>
                 </Scroll>
