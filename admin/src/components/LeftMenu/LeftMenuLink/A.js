@@ -17,7 +17,7 @@ const A = styled.a`
     color: ${props => props.theme.main.colors.white};
     background: ${props => props.theme.main.colors.leftMenu['link-hover']};
 
-    border-left: 0.3rem solid ${props => props.theme.main.colors.strapi.blue};
+    border-left: 0.3rem solid ${props => props.theme.main.colors.strapi.red};
     text-decoration: none;
   }
 
@@ -32,7 +32,7 @@ const A = styled.a`
 
   &.linkActive {
     color: white !important;
-    border-left: 0.3rem solid ${props => props.theme.main.colors.strapi.blue};
+    border-left: 0.3rem solid ${props => props.theme.main.colors.strapi.red};
   }
 `;
 

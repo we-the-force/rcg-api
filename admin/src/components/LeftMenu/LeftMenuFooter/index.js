@@ -21,8 +21,9 @@ function LeftMenuFooter({ version }) {
           id={messages.poweredBy.id}
           defaultMessage={messages.poweredBy.defaultMessage}
           key="poweredBy"
+          style={{color: '#ffffff'}}
         />
-        <a key="website" href="https://strapi.io" target="_blank" rel="noopener noreferrer">
+        <a key="website" href="https://strapi.io" target="_blank" rel="noopener noreferrer" style={{color: '#0297ED'}}>
           Strapi
         </a>
         &nbsp;
@@ -30,7 +31,7 @@ function LeftMenuFooter({ version }) {
           href={`https://github.com/strapi/strapi/releases/tag/v${version}`}
           key="github"
           target="_blank"
-          rel="noopener noreferrer"
+          rel="noopener noreferrer" style={{color: '#0297ED'}}
         >
           v{version}
         </a>

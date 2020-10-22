@@ -22,6 +22,8 @@ const Wrapper = styled.div`
   }
 `;
 
+//background: ${props => props.theme.main.colors.strapi['blue-darker']};
+
 Wrapper.defaultProps = {
   theme: {
     main: {

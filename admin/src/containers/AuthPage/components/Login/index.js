@@ -51,7 +51,7 @@ const Login = ({ formErrors, modifiedData, onChange, onSubmit, requestError }) =
                 value={modifiedData.rememberMe}
               />
               <BaselineAlignment top size="27px">
-                <Button type="submit" color="primary" textTransform="uppercase">
+                <Button type="submit" newColor="#EC1B23" textTransform="uppercase">
                   {formatMessage({ id: 'Auth.form.button.login' })}
                 </Button>
               </BaselineAlignment>
