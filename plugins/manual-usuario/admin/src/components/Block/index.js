@@ -1,11 +1,12 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
 import { Wrapper, Sub } from "./components";
-const Block = ({ children, description, style, title }) => (
-    <div className="col-md-12">
-        <Wrapper style={style}>
+const Block = ({ children, description, style, title, className }) => (
+    <div className="col-md-12" style={{padding: '0px'}}>
+        <Wrapper style={style} className={className}>
             <Sub>
-                {!!title && <p>{title} </p>} {!!description && <p>{description} </p>}
+                {!!title && <p className="titulo">{title} </p>}{" "}
+                {!!description && <p>{description} </p>}
             </Sub>
             {children}
         </Wrapper>
@@ -15,12 +16,12 @@ Block.defaultProps = {
     children: null,
     description: null,
     style: {},
-    title: null
+    title: null,
 };
 Block.propTypes = {
     children: PropTypes.any,
     description: PropTypes.string,
     style: PropTypes.object,
-    title: PropTypes.string
+    title: PropTypes.string,
 };
 export default memo(Block);
