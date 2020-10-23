@@ -11,9 +11,9 @@ class TagsPanel extends Component {
     render() {
         return (
             <div id="tags-block" name="tags-block">
-                <Block title="Tags" className="Tags-Block">
-                    <h3>Pasos</h3>
-                    <ol>
+                <Block title="Tags"  arrow={true} className="card">
+                    <h3 className="hidable">Pasos</h3>
+                    <ol className="hidable">
                         <li>
                             En el sidebar izquierdo, seleccionas "Tags" en
                             "COLLECTION TYPES".
