@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 import Block from "../../Block";
 import Scroll from "../../Scroll";
@@ -7,7 +7,7 @@ import "./style.css";
 
 function ContentIndex() {
     return (
-        <Block title="Índice" className="indice">
+        <Block title="Índice" arrow={false} className="indice">
             <div>
                 <Scroll type="id" element="articulo-block" offset={-85}>
                     <a href="#articulo-block" className="Index-Element">

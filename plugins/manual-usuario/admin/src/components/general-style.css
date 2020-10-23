@@ -1,9 +1,142 @@
-.requirement-title {
-    color: red;
+.card {
+    padding: 13px 19px 20px 19px !important;
+    margin: 0px;
+    background: #F8F8F8 !important;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.15) !important;
+    border-radius: 15px !important;
 }
-.requirement-element {
-    margin-left: 20px;
+
+.card .titulo {
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 20px !important;
+    line-height: 35px;
+    margin-bottom: 5px !important;
 }
-.step-element {
-    margin-left: 20px;
+
+.card .requirement-title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 16px;
+    color: #EC1B23;
+}
+
+.card .links {
+    display: flex;
+}
+
+.card .links .requirement-element {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #00B3FF;
+    margin: 0px !important;
+    padding-right: 25px;
+    margin-bottom: 14px !important;
+}
+
+.card h3 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+}
+
+.card ol {
+    margin-bottom: 18px;
+    padding-left: 25px;
+}
+
+.card ol li {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+}
+
+.card ol li ul {
+    margin: 10px 0px;
+    padding-left: 25px;
+}
+
+.card ol li ul li {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+}
+
+.card ol li ul li .step-element {
+    margin: 5px 0px !important;
+    padding-left: 16px !important;
+    margin-bottom: 10px !important;
+}
+
+.card .errores {
+    border-top: 2px solid #EC1B23;
+    border-image-source: linear-gradient(45deg, #ec1b23, #F8F8F8);
+    border-image-slice: 1;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: -7px;
+    margin-right: 0px;
+    padding-top: 20px;
+    padding-left: 25px;
+}
+
+.card .errores h4 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #EC1B23;
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+.card .errores ul {
+    padding-left: 15px !important;
+    margin: 4px 0px !important;
+}
+
+.card .errores li {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    color: #000000;
+}
+
+.card {
+    max-height: 2000px;
+    transition: max-height 0.3s ease-in-out 0s;
+}
+
+.card .hidable {
+    opacity: 1px;
+    visibility: visible;
+    transition: opacity 0.3s ease-in-out 0.2s, visibility 0.3s ease-in-out 0.2s;
+}
+
+.collapsed {
+    max-height: 40px;
+    box-sizing: content-box;
+    padding-bottom: 13px !important;
+    transition: max-height 0.3s ease-in-out 0.1s, padding-bottom 0s ease-in-out 0.3s;
+}
+
+.collapsed .titulo {
+    margin-bottom: 0px !important;
+    transition: margin-bottom 0s ease-in-out 0.3s;
+}
+
+.collapsed .hidable {
+    opacity: 0px;
+    visibility: collapse;
+    transition: opacity 0.2s ease-in-out, visibility 0.3s ease-in-out;
 }

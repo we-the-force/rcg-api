@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Block from "../../Block";
 import Scroll from "../../Scroll";
 import "./style.css";
@@ -7,9 +7,9 @@ import "./style.css";
 function ArticuloPanel() {
     return (
         <div id="articulo-block" name="articulo-block">
-            <Block title="Artículo" className="Articulo-Block" >
-                <h2 className="requirement-title">(Requerimientos)</h2>
-                <div className="links">
+            <Block title="Artículo" arrow={true} className="Articulo-Block card" >
+                <h2 className="requirement-title hidable">(Requerimientos)</h2>
+                <div className="links hidable">
                     <Scroll type="id" element="autor-block" offset={-85}>
                         <a className="requirement-element">Autores</a>
                     </Scroll>
@@ -17,8 +17,8 @@ function ArticuloPanel() {
                         <a className="requirement-element">Categorías</a>
                     </Scroll>
                 </div>
-                <h3>Pasos</h3>
-                <ol>
+                <h3 className="hidable">Pasos</h3>
+                <ol className="hidable">
                     <li>
                         En el sidebar izquierdo, seleccionas "Articulos" en
                         "COLLECTION TYPES".
@@ -101,7 +101,7 @@ function ArticuloPanel() {
                     </li>
                     <li>Presionas "Save".</li>
                 </ol>
-                <div className="errores">
+                <div className="hidable errores">
                     <h4>Pueden ocurrir errores si:</h4>
                     <ul>
                         <li>
