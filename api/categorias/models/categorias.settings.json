@@ -13,8 +13,12 @@
       "type": "string"
     },
     "articulos": {
-      "via": "categoria",
-      "collection": "articulo"
+      "collection": "articulo",
+      "via": "categoria"
+    },
+    "url": {
+      "type": "uid",
+      "targetField": "nombre"
     }
   }
 }

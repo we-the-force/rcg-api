@@ -34,8 +34,8 @@
       "default": 0
     },
     "categoria": {
-      "model": "categorias",
-      "via": "articulos"
+      "via": "articulos",
+      "model": "categorias"
     },
     "autor": {
       "model": "autor",
