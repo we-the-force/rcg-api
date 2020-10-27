@@ -27,7 +27,7 @@
       "type": "richtext"
     },
     "info_mid": {
-      "type": "richtext"
+      "type": "text"
     }
   }
 }
