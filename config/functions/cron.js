@@ -46,6 +46,6 @@ module.exports = {
 
     /* featuredArticles.forEach(async (article) => {
       await strapi.api.articulo.services.articulo.update({id: article.id}, {relevante: false});
-    }) */
-}
+    }) 
+}*/
 };
