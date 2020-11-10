@@ -5,26 +5,24 @@
  * to customize this controller
  */
 
- const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
+const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
 
 module.exports = {
     async create(ctx) {
         let entity;
         if (ctx.is('multipart')) {
-            const {data, files} = parseMultipartData(ctx);
-            entity = await strapi.services.calca.create(data, {files});
-        }
-        else
-        {
+            const { data, files } = parseMultipartData(ctx);
+            entity = await strapi.services.calca.create(data, { files });
+        } else {
             entity = await strapi.services.calca.create(ctx.request.body);
         }
 
-        let entry = sanitizeEntity(entity, {model: strapi.models.calca});
+        let entry = sanitizeEntity(entity, { model: strapi.models.calca });
 
         console.log("Adding calca:\r\n", entry);
 
         strapi.plugins['email'].services.email.send({
-            to: "erfamel@gmail.com",
+            to: "web@rcg.com.mx",
             from: "about@wetheforce.com",
             subject: "Se ha dado de alta una calca",
             text: "Se ha dado de alta una calca",
