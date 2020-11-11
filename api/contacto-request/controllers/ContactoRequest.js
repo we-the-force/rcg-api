@@ -5,7 +5,7 @@ module.exports = {
         //await strapi.plugins['email'].services.email.send({
         await strapi.plugins['email'].services.email.send({
             to: "aledleon2@gmail.com",
-            from: "contactoWeb@rcg.com.mx",
+            from: "aledleon2@gmail.com",
             subject: `Intento de Contacto [${requestObject.subject}]`,
             text: requestObject.subject,
             html: `<h2>Alguien se ha intentado poner en contacto con ustedes</h2>
