@@ -4,8 +4,8 @@ module.exports = {
         let requestObject = ctx.request.body;
         //await strapi.plugins['email'].services.email.send({
         await strapi.plugins['email'].services.email.send({
-            to: "aledleon2@gmail.com",
-            from: "aledleon2@gmail.com",
+            to: "web@rcg.com.mx",
+            from: "web@rcg.com.mx",
             subject: `Intento de Contacto [${requestObject.subject}]`,
             text: requestObject.subject,
             html: `<h2>Alguien se ha intentado poner en contacto con ustedes</h2>

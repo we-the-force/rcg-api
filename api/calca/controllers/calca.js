@@ -23,7 +23,7 @@ module.exports = {
 
         strapi.plugins['email'].services.email.send({
             to: "web@rcg.com.mx",
-            from: "about@wetheforce.com",
+            from: "web@rcg.com.mx",
             subject: "Se ha dado de alta una calca",
             text: "Se ha dado de alta una calca",
             html: `<h2>Alguien ha dado de alta una calca</h2>
