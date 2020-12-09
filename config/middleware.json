@@ -19,6 +19,15 @@
     "settings": {
         "validateArticulo": {
             "enabled": true
+        },
+        "parser": {
+            "enabled": true,
+            "multipart": true,
+            "formLimit": "500mb",
+            "jsonLimit": "200mb",
+            "formidable": {
+                "maxFileSize": 524288000
+            }
         }
     }
 }
