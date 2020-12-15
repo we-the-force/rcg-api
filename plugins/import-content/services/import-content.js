@@ -5,9 +5,14 @@ const { resolveDataFromRequest, getItemsFromData } = require("./utils/utils");
 const analyzer = require("./utils/analyzer");
 const _ = require("lodash");
 const importFields = require("./utils/importFields");
+const importArticuloFields = require("./utils/importArticuloFields");
 const importMediaFiles = require("./utils/importMediaFiles");
 const import_queue = {};
 const undo_queue = {};
+const categorias_queue = {};
+var autores_queue = {};
+var tags_queue = {};
+
 
 const removeImportedFiles = async (fileIds, uploadConfig) => {
     const removePromises = fileIds.map(id =>
@@ -49,6 +54,10 @@ const undoNextItem = async (importConfig, uploadConfig) => {
 
 const importNextItem = async importConfig => {
     const sourceItem = import_queue[importConfig.id].shift();
+    const categorias = categorias_queue[importConfig.id];
+    const autores = autores_queue[importConfig.id];
+    const tags = tags_queue[importConfig.id];
+    console.count('-----------source--------------\n',sourceItem);
     if (!sourceItem) {
         console.log("import complete");
         await strapi
@@ -57,18 +66,36 @@ const importNextItem = async importConfig => {
         return;
     }
     try {
-        const importedItem = await importFields(
-            sourceItem,
-            importConfig.fieldMapping
-        );
+        console.log('geting item structure');
+        let importedItem;
+        if(importConfig.contentType === "application::articulo.articulo"){
+            importedItem = await importArticuloFields(
+                sourceItem,
+                importConfig.fieldMapping,
+                categorias,
+                autores,
+                tags
+            );
+            if(importedItem['autor'] === null){
+                importedItem['autor'] = 1;
+            }
+        }else{
+            importedItem = await importFields(
+                sourceItem,
+                importConfig.fieldMapping
+            );
+        }
+        console.log('imported item',importedItem);
         const savedContent = await strapi
             .query(importConfig.contentType)
             .create(importedItem);
+        console.log('content saved', savedContent);
         const uploadedFiles = await importMediaFiles(
             savedContent,
             sourceItem,
             importConfig
         );
+        console.log('files uploaded',uploadedFiles);
         const fileIds = _.map(_.flatten(uploadedFiles), "id");
         await strapi.query("importeditem", "import-content").create({
             importconfig: importConfig.id,
@@ -76,9 +103,11 @@ const importNextItem = async importConfig => {
             ContentType: importConfig.contentType,
             importedFiles: { fileIds }
         });
+        console.count('ahoy');
     } catch (e) {
-        console.log(e);
+        console.log('error',e);
     }
+    console.log('next');
     const { IMPORT_THROTTLE } = strapi.plugins["import-content"].config;
     setTimeout(() => importNextItem(importConfig), IMPORT_THROTTLE);
 };
@@ -97,14 +126,27 @@ module.exports = {
     importItems: (importConfig, ctx) =>
         new Promise(async (resolve, reject) => {
             const { dataType, body } = await resolveDataFromRequest(ctx);
-            console.log("importitems", importConfig);
             try {
                 const { items } = await getItemsFromData({
                     dataType,
                     body,
                     options: importConfig.options
                 });
-                import_queue[importConfig.id] = items;
+
+            let categorias = await strapi
+                .query('categorias')
+                .find({_limit: -1});
+            let autores = await strapi
+                .query('autor')
+                .find({_limit: -1});
+            let tags = await strapi
+                .query('tag')
+                .find({_limit: -1});
+
+            categorias_queue[importConfig.id] = categorias;
+            autores_queue[importConfig.id] = autores;
+            tags_queue[importConfig.id] = tags;
+            import_queue[importConfig.id] = items;
             } catch (error) {
                 reject(error);
             }

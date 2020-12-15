@@ -31,7 +31,6 @@ class MappingTable extends Component {
             targetField
         );
         this.setState(state, () => this.props.onChange(this.state.mapping));
-        console.log(this.state.mapping);
     };
     CustomRow = ({ row }) => {
         const { fieldName, count, format, minLength, maxLength, meanLength } = row;
@@ -42,13 +41,13 @@ class MappingTable extends Component {
                     <p>{count}</p>
                 </td>
                 <td>
-                    {format === "string" && <TextIcon fill="#fdd835" />}
-                    {format === "number" && <NumberIcon fill="#fdd835" />}
-                    {format === "boolean" && <BoolIcon fill="#fdd835" />}
-                    {format === "object" && <JsonIcon fill="#fdd835" />}
-                    {format === "email" && <EmailIcon fill="#fdd835" />}
-                    {format === "date" && <DateIcon fill="#fdd835" />}
-                    {format === "xml" && <XmlIcon fill="#fdd835" />} <p>{format}</p>
+                    {format === "string" && <TextIcon fill="#EC1B23" />}
+                    {format === "number" && <NumberIcon fill="#EC1B23" />}
+                    {format === "boolean" && <BoolIcon fill="#EC1B23" />}
+                    {format === "object" && <JsonIcon fill="#EC1B23" />}
+                    {format === "email" && <EmailIcon fill="#EC1B23" />}
+                    {format === "date" && <DateIcon fill="#EC1B23" />}
+                    {format === "xml" && <XmlIcon fill="#EC1B23" />} <p>{format}</p>
                 </td>
                 <td>
                     <span>{minLength}</span>
@@ -78,6 +77,7 @@ class MappingTable extends Component {
         );
     };
     render() {
+        console.log(this.props);
         const { analysis } = this.props;
         const props = {
             title: "Field Mapping",

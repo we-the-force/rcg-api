@@ -17,15 +17,24 @@ class TargetFieldSelect extends Component {
     fillOptions() {
         const { targetModel } = this.props;
         const schemaAttributes = get(targetModel, ["schema", "attributes"], {});
-        const options = Object.keys(schemaAttributes)
+        var options;
+        if(targetModel.apiID === 'articulo'){
+            options = Object.keys(schemaAttributes)
             .map(fieldName => {
                 const attribute = get(schemaAttributes, [fieldName], {});
+                let relation = attribute.type ? false : true;
+                return { label: fieldName, value: fieldName, relation: relation };
+            });
+        }else{
+            options = Object.keys(schemaAttributes)
+                .map(fieldName => {
+                    const attribute = get(schemaAttributes, [fieldName], {});
+                    return attribute.type && { label: fieldName, value: fieldName, relation: false };
+                })
+                .filter(obj => obj !== undefined);
+        }
 
-                return attribute.type && { label: fieldName, value: fieldName };
-            })
-            .filter(obj => obj !== undefined);
-
-        return [{ label: "None", value: "none" }, ...options];
+        return [{ label: "None", value: "none", relation: false }, ...options];
     }
     render() {
         return (

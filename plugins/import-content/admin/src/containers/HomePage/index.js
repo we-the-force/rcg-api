@@ -118,6 +118,7 @@ class HomePage extends Component {
       fieldMapping
     };
     try {
+      console.log('yuju',importConfig);
       await request("/import-content", { method: "POST", body: importConfig });
       this.setState({ saving: false }, () => {
         strapi.notification.info("Import started");
