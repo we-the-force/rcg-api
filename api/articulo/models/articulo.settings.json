@@ -34,8 +34,8 @@
       "default": 0
     },
     "categoria": {
-      "via": "articulos",
-      "model": "categorias"
+      "model": "categorias",
+      "via": "articulos"
     },
     "autor": {
       "model": "autor",
@@ -53,6 +53,28 @@
       "collection": "tag",
       "via": "articulos",
       "dominant": true
+    },
+    "Sumario": {
+      "type": "text"
+    },
+    "Galeria": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "articulo": {
+      "model": "articulo",
+      "via": "articulosRelacionados"
+    },
+    "articulosRelacionados": {
+      "collection": "articulo",
+      "via": "articulo"
     }
   }
 }
