@@ -47,7 +47,8 @@ const Wysiwyg = ({
   };
 
   config.strapiUpload = {
-    uploadUrl: `${strapi.backendURL}/upload`,
+    uploadUrl: `http://149.28.252.152:1337/upload`,
+    // uploadUrl: `${strapi.backendURL}/upload`,
     headers: {
       Authorization: "Bearer " + auth.getToken(),
     },
