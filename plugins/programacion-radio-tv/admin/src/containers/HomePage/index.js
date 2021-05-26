@@ -49,20 +49,21 @@ class HomePage extends Component {
                     strapi.notification.error(`${e}`);
                     return;
                 }
-                let programacion = {
+                let programacionWeek = {
+                    "domingo": [],
                     "lunes": [],
                     "martes": [],
                     "miercoles": [],
                     "jueves": [],
                     "viernes": [],
                     "sabado": [],
-                    "domingo": []
                 }
-                let index = 1;
-                for (let day in programacion) {
-                    programacion[day] = this.state.programacion.filter(elem => {
+                let index = 0;
+                for (let day in programacionWeek) {
+                    programacionWeek[day] = this.state.programacion.filter(elem => {
                         let fechaInicio = moment(elem.startDate);
                         let fechaFinal = moment(elem.endDate);
+                        
                         if (fechaInicio.format('d') == index && fechaFinal.format('d') == index) {
                             return true;
                         }
@@ -90,7 +91,7 @@ class HomePage extends Component {
                     "canal_estacion": {
                         "id": this.state.selectedChannel
                     },
-                    "programacion": programacion
+                    "programacion": programacionWeek
                 }
                 let response = '';
                 if(!this.state.isUpdate){
