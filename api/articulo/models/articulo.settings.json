@@ -75,6 +75,11 @@
     "articulosRelacionados": {
       "collection": "articulo",
       "via": "articulo"
+    },
+    "cover_creditos": {
+      "type": "string",
+      "required": true,
+      "maxLength": 30
     }
   }
 }
