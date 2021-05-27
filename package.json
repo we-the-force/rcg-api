@@ -1,56 +1,56 @@
 {
-  "name": "rcg-api",
-  "private": true,
-  "version": "0.1.0",
-  "description": "A Strapi application",
-  "scripts": {
-    "develop": "strapi develop",
-    "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi"
-  },
-  "devDependencies": {},
-  "dependencies": {
-    "@devexpress/dx-react-core": "^2.7.1",
-    "@devexpress/dx-react-scheduler": "^2.7.1",
-    "@devexpress/dx-react-scheduler-material-ui": "^2.7.1",
-    "@material-ui/core": "^4.11.0",
-    "@material-ui/icons": "^4.9.1",
-    "content-type-parser": "1.0.2",
-    "csv-parse": "4.8.2",
-    "get-urls": "9.2.0",
-    "knex": "<0.20.0",
-    "lodash": "^4.17.20",
-    "moment": "^2.29.1",
-    "mysql": "^2.18.1",
-    "prop-types": "^15.7.2",
-    "request": "^2.88.2",
-    "rss-parser": "3.7.3",
-    "simple-statistics": "7.0.7",
-    "smoothscroll-polyfill": "^0.4.4",
-    "sqlite3": "latest",
-    "strapi": "3.1.3",
-    "strapi-admin": "3.1.3",
-    "strapi-connector-bookshelf": "3.1.3",
-    "strapi-plugin-ckeditor5": "^1.10.0",
-    "strapi-plugin-content-manager": "3.1.3",
-    "strapi-plugin-content-type-builder": "3.1.3",
-    "strapi-plugin-email": "3.1.3",
-    "strapi-plugin-graphql": "3.1.3",
-    "strapi-plugin-upload": "3.1.3",
-    "strapi-plugin-users-permissions": "3.1.3",
-    "strapi-utils": "3.1.3",
-    "striptags": "3.1.1"
-  },
-  "author": {
-    "name": "A Strapi developer"
-  },
-  "strapi": {
-    "uuid": "21d17d2a-cbfd-4099-97b8-9b337163d3ef"
-  },
-  "engines": {
-    "node": ">=10.0.0",
-    "npm": ">=6.0.0"
-  },
-  "license": "MIT"
+    "name": "rcg-api",
+    "private": true,
+    "version": "0.1.0",
+    "description": "A Strapi application",
+    "scripts": {
+        "develop": "strapi develop",
+        "start": "strapi start",
+        "build": "strapi build",
+        "strapi": "strapi"
+    },
+    "devDependencies": {},
+    "dependencies": {
+        "@devexpress/dx-react-core": "^2.7.1",
+        "@devexpress/dx-react-scheduler": "^2.7.1",
+        "@devexpress/dx-react-scheduler-material-ui": "^2.7.1",
+        "@material-ui/core": "^4.11.0",
+        "@material-ui/icons": "^4.9.1",
+        "content-type-parser": "1.0.2",
+        "csv-parse": "4.8.2",
+        "get-urls": "9.2.0",
+        "knex": "<0.20.0",
+        "lodash": "^4.17.20",
+        "moment": "^2.29.1",
+        "mysql": "^2.18.1",
+        "prop-types": "^15.7.2",
+        "request": "^2.88.2",
+        "rss-parser": "3.7.3",
+        "simple-statistics": "7.0.7",
+        "smoothscroll-polyfill": "^0.4.4",
+        "sqlite3": "latest",
+        "strapi": "3.2.3",
+        "strapi-admin": "3.2.3",
+        "strapi-connector-bookshelf": "3.2.3",
+        "strapi-plugin-ckeditor5": "^1.10.0",
+        "strapi-plugin-content-manager": "3.2.3",
+        "strapi-plugin-content-type-builder": "3.2.3",
+        "strapi-plugin-email": "3.2.3",
+        "strapi-plugin-graphql": "3.2.3",
+        "strapi-plugin-upload": "3.2.3",
+        "strapi-plugin-users-permissions": "3.2.3",
+        "strapi-utils": "3.2.3",
+        "striptags": "3.1.1"
+    },
+    "author": {
+        "name": "A Strapi developer"
+    },
+    "strapi": {
+        "uuid": "21d17d2a-cbfd-4099-97b8-9b337163d3ef"
+    },
+    "engines": {
+        "node": ">=10.0.0",
+        "npm": ">=6.0.0"
+    },
+    "license": "MIT"
 }
