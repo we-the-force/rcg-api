@@ -1,3 +1,6 @@
+// host: env("HOST", "0.0.0.0"),
+// url: env("PUBLIC_URL", "http://149.28.252.152:1337"),
+
 module.exports = ({ env }) => ({
     host: env("HOST", "localhost"),
     url: env("PUBLIC_URL", ""),
