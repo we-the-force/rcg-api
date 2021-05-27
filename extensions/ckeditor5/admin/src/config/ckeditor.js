@@ -43,10 +43,8 @@ module.exports = ({
         decorators: {
             isExternal: {
                 mode: 'automatic',
-                callback: url => url.startsWith('http://'),
+                callback: url => true,
                 attributes: {
-                    target: '_blank',
-                    rel: 'noopener noreferrer',
                     class: 'external'
                 }
             }
