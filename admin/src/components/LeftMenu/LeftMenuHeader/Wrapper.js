@@ -20,13 +20,14 @@ const Wrapper = styled.div`
     height: ${props => props.theme.main.sizes.leftMenu.height};
     font-size: 2rem;
     letter-spacing: 0.2rem;
+    color: $white;
+
     background-image: url(${Logo});
     background-repeat: no-repeat;
     background-position: left center;
     background-size: auto 2.5rem;
-    color: $white;
   }
-  `;
+`;
 
 Wrapper.defaultProps = {
   theme: {

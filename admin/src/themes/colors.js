@@ -40,7 +40,7 @@ const colors = {
   strapi: {
     'gray-light': '#eff3f6',
     gray: '#535f76',
-    'blue-darker': '#666666',
+    'blue-darker': '#18202e',
     'red-rcg': '#EC1B23',
     'blue-dark': '#151c2e',
     blue: '#0097f7',

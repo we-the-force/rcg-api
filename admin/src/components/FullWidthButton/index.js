@@ -3,8 +3,6 @@ import { Button as Base } from '@buffetjs/core';
 
 const Button = styled(Base)`
   width: 100%;
-  background: ${({ newColor }) => newColor}; 
-  border-color: ${({ newColor }) => newColor};
   text-transform: ${({ textTransform }) => textTransform};
 `;
 

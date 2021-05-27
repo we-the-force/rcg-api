@@ -5,25 +5,19 @@
  */
 
 import React from 'react';
-import { defineMessages, FormattedMessage } from 'react-intl';
 import { PropTypes } from 'prop-types';
 
 import Wrapper from './Wrapper';
-import messages from './messages.json';
-
-defineMessages(messages);
 
 function LeftMenuFooter({ version }) {
+  // PROJECT_TYPE is an env variable defined in the webpack config
+  // eslint-disable-next-line no-undef
+  const projectType = PROJECT_TYPE;
+
   return (
     <Wrapper>
       <div className="poweredBy">
-        <FormattedMessage
-          id={messages.poweredBy.id}
-          defaultMessage={messages.poweredBy.defaultMessage}
-          key="poweredBy"
-          style={{color: '#ffffff'}}
-        />
-        <a key="website" href="https://strapi.io" target="_blank" rel="noopener noreferrer" style={{color: '#0297ED'}}>
+        <a key="website" href="https://strapi.io" target="_blank" rel="noopener noreferrer">
           Strapi
         </a>
         &nbsp;
@@ -31,9 +25,13 @@ function LeftMenuFooter({ version }) {
           href={`https://github.com/strapi/strapi/releases/tag/v${version}`}
           key="github"
           target="_blank"
-          rel="noopener noreferrer" style={{color: '#0297ED'}}
+          rel="noopener noreferrer"
         >
           v{version}
+        </a>
+        &nbsp;
+        <a href="https://strapi.io" target="_blank" rel="noopener noreferrer">
+          — {projectType} Edition
         </a>
       </div>
     </Wrapper>
