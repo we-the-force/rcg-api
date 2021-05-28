@@ -47,7 +47,7 @@ const Wysiwyg = ({
   };
 
   config.strapiUpload = {
-    uploadUrl: `https://api.rcg.com.mx/upload`,
+    uploadUrl: `https://api.rcgmedia.mx/upload`,
     // uploadUrl: `${strapi.backendURL}/upload`,
     headers: {
       Authorization: "Bearer " + auth.getToken(),
@@ -56,7 +56,7 @@ const Wysiwyg = ({
 
   const onImageSelected = (data) => {
     if (data && data.mime.includes("image")) {
-      const url = "https://api.rcg.com.mx" + data.url;
+      const url = "https://api.rcgmedia.mx" + data.url;
       // const url = prefixFileUrlWithBackendUrl(data.url);
       editor.model.change((writer) => {
         const imageElement = writer.createElement("image", {
