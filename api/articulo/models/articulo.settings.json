@@ -2,11 +2,13 @@
   "kind": "collectionType",
   "collectionName": "articulos",
   "info": {
-    "name": "articulo"
+    "name": "articulo",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": true
   },
   "attributes": {
     "Titulo": {
