@@ -14,6 +14,7 @@ import { get } from "lodash";
 import { Header } from "@buffetjs/custom";
 import moment from 'moment';
 import { Select, Label, Button } from "@buffetjs/core";
+import { Checkbox } from '@buffetjs/core';
 import { LoadingIndicator } from "strapi-helper-plugin";
 
 moment.locale('es');
@@ -29,7 +30,8 @@ class HomePage extends Component {
         programacion: {},
         uploading: false,
         isUpdate: false,
-        idTable: ''
+        idTable: '',
+        recurrency: 'Una vez',
     };
     onSaveSchedule = async () => {
         this.setState({ uploading: true }, async () => {
@@ -84,27 +86,55 @@ class HomePage extends Component {
                     });
                     index++;
                 }
-                let table = {
-                    "fecha_inicio": this.state.fecha_inicio,
-                    "fecha_final": this.state.fecha_final,
-                    "Radio_TV": this.state.selectedChannelMedia,
-                    "canal_estacion": {
-                        "id": this.state.selectedChannel
-                    },
-                    "programacion": programacionWeek
+
+                let fechaPrimerSemana = moment(this.state.fecha_inicio);
+                let fechaUltimaSemana = moment(fechaPrimerSemana);
+                switch (this.state.recurrency) {
+                    case 'Una vez':
+                        fechaUltimaSemana.add(1, 'w').subtract(1, 'd');
+                        break;
+                    case 'Un mes':
+                        fechaUltimaSemana.add(4, 'w').subtract(1, 'd');
+                        break;
+                    case '6 Meses':
+                        fechaUltimaSemana.add(24, 'w').subtract(1, 'd');
+                        break;
+                    case 'Un año':
+                        fechaUltimaSemana.add(52, 'w').subtract(1, 'd');
+                        break;
+                    default:
+                        break;
                 }
+                let fechaInicioCurrent = moment(fechaPrimerSemana);
+                let fechaFinalCurrent = moment(fechaPrimerSemana).add(1,'w').subtract(1, 'd');
                 let response = '';
-                if(!this.state.isUpdate){
-                    response = await request("/programacion-semanas", {
-                        method: "POST",
-                        body: table
-                    });
-                }else{
-                    response = await request(`/programacion-semanas/${this.state.idTable}`, {
-                        method: "PUT",
-                        body: table
-                    });
-                }
+                do{
+                    let res = await this.getIdTable(fechaInicioCurrent);
+                    let thisIdTable = get(res, ["idProgramacion"], false);
+                    let table = {
+                        "fecha_inicio": fechaInicioCurrent.format('YYYY-MM-DD'),
+                        "fecha_final": fechaFinalCurrent.format('YYYY-MM-DD'),
+                        "Radio_TV": this.state.selectedChannelMedia,
+                        "canal_estacion": {
+                            "id": this.state.selectedChannel
+                        },
+                        "programacion": programacionWeek
+                    }
+                    if(!thisIdTable){
+                        response = await request("/programacion-semanas", {
+                            method: "POST",
+                            body: table
+                        });
+                    }else{
+                        response = await request(`/programacion-semanas/${thisIdTable}`, {
+                            method: "PUT",
+                            body: table
+                        });
+                    }
+                    
+                    fechaInicioCurrent.add(1, 'w');
+                    fechaFinalCurrent.add(1, 'w');
+                }while(fechaFinalCurrent.isSameOrBefore(fechaUltimaSemana));
 
                 this.setState({ uploading: false, isUpdate: true, idTable: response.id}, () => {
                     strapi.notification.success(`Schedule added Successfully`);
@@ -118,6 +148,28 @@ class HomePage extends Component {
             }
         });
     }
+
+    getIdTable = async (currentDate) => {
+        let momentDate = moment(currentDate) /* fecha moment del lunes */
+        let date = momentDate.format('YYYY-MM-DD'); /* formato lunes */
+        try {
+            /* llamada a datos */
+            const res = await request(`/programacion-semanas?fecha_inicio=${date}&canal_estacion.id=${this.state.selectedChannel}`, {
+                method: "GET"
+            });
+            /* hay datos? */
+            if (res.length === 0) return [];
+
+            /* id de la tabla */
+            let idProgramacion = res[0].id;
+            return { idProgramacion } /* regresa array de programas fecha actual y el id en caso de ser update */
+        } catch (e) {
+            console.log(e);
+            strapi.notification.error(`${e}`);
+        }
+        return [];
+    };
+
     getChannels = async () => {
         try {
             const res = await request("/canal-estacions", {
@@ -145,6 +197,11 @@ class HomePage extends Component {
             selectedChannel,
             selectedChannelMedia: value.media,
             scheduleActive: false
+        });
+    };
+    setRecurrency = (val) => {
+        this.setState({
+            recurrency: val
         });
     };
     onClickSchedule = () => {
@@ -225,6 +282,19 @@ class HomePage extends Component {
                                     color={"primary"}
                                     onClick={this.onClickSchedule}
                                 />
+                            </div>
+                        </Row>
+                        <Row className="row">
+                        <div className={"col-4"}>
+                            <Label htmlFor="recurrency">Repetir programacion semanal:</Label>
+                            <Select
+                                name="recurrency"
+                                options={['Una vez', 'Un mes','6 Meses', 'Un año']}
+                                value={this.state.recurrency}
+                                onChange={({ target: { value } }) =>
+                                    this.setRecurrency(value)
+                                }
+                            />
                             </div>
                         </Row>
                     </Block>

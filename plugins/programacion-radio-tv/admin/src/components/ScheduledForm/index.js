@@ -133,7 +133,7 @@ class ScheduleForm extends Component {
 
     /* actualiza fecha actual */
     currentDateChange = (currentDate) => {
-        this.getData(currentDate).then(res => { /* cuando cambian de fecha */
+        this.getData(moment(currentDate).startOf('isoWeek')).then(res => { /* cuando cambian de fecha */
             let data = get(res, ["programas"], []);
             let date = get(res, ["newCurrentDate"], currentDate);
             let IdUpdate = get(res, ["idProgramacion"], false);
