@@ -1,0 +1,48 @@
+{
+  "kind": "singleType",
+  "collectionName": "anuncios",
+  "info": {
+    "name": "Anuncios"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "bannerHorizontalUno": {
+      "type": "component",
+      "repeatable": false,
+      "component": "anuncios.anuncio-campos"
+    },
+    "bannerHorizontalDos": {
+      "type": "component",
+      "repeatable": false,
+      "component": "anuncios.anuncio-campos"
+    },
+    "bannerHorizontalTres": {
+      "type": "component",
+      "repeatable": false,
+      "component": "anuncios.anuncio-campos"
+    },
+    "bannerVerticalUno": {
+      "type": "component",
+      "repeatable": false,
+      "component": "anuncios.anuncio-campos"
+    },
+    "bannerVerticalDos": {
+      "type": "component",
+      "repeatable": false,
+      "component": "anuncios.anuncio-campos"
+    },
+    "bannerVerticalTres": {
+      "type": "component",
+      "repeatable": false,
+      "component": "anuncios.anuncio-campos"
+    },
+    "bannerHorizontalCuatro": {
+      "type": "component",
+      "repeatable": false,
+      "component": "anuncios.anuncio-campos"
+    }
+  }
+}

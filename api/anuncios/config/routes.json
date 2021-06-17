@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/anuncios",
+      "handler": "anuncios.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/anuncios",
+      "handler": "anuncios.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/anuncios",
+      "handler": "anuncios.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

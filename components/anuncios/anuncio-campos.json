@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_anuncios_anuncio_campos",
+  "info": {
+    "name": "anuncioCampos",
+    "icon": "wallet"
+  },
+  "options": {},
+  "attributes": {
+    "alt": {
+      "type": "string"
+    },
+    "googleAds": {
+      "type": "boolean",
+      "default": false
+    },
+    "link": {
+      "type": "string"
+    },
+    "deskImg": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "mobileImg": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}
