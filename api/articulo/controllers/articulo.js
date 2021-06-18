@@ -9,18 +9,18 @@ const { parseMultipartData, sanitizeEntity } = require("strapi-utils");
 module.exports = {
   async find(ctx) {
     let entities;
-    // ctx.query = {
-    //   ...ctx.query,
-    //   _limit: 20,
-    // };
+    ctx.query = {
+      ...ctx.query,
+      _limit: 20,
+    };
     if (ctx.query._q) {
-      entities = await strapi.services.restaurant.search(ctx.query);
+      entities = await strapi.services.articulo.search(ctx.query);
     } else {
-      entities = await strapi.services.restaurant.find(ctx.query);
+      entities = await strapi.services.articulo.find(ctx.query);
     }
 
     return entities.map((entity) =>
-      sanitizeEntity(entity, { model: strapi.models.restaurant })
+      sanitizeEntity(entity, { model: strapi.models.articulo })
     );
   },
 
