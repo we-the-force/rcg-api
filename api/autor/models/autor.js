@@ -5,4 +5,13 @@
  * to customize this model
  */
 
-module.exports = {};
+module.exports = {
+    lifecycles: {
+        afterCreate(result) {
+            console.log("add to site map");
+        },
+        afterUpdate(data) {
+            console.log("add to site map");
+        },
+    },
+};
