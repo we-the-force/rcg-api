@@ -9,10 +9,10 @@ const { parseMultipartData, sanitizeEntity } = require("strapi-utils");
 module.exports = {
   async find(ctx) {
     let entities;
-    ctx.query = {
-      ...ctx.query,
-      _limit: 20,
-    };
+    // ctx.query = {
+    //   ...ctx.query,
+    //   _limit: 20,
+    // };
     if (ctx.query._q) {
       entities = await strapi.services.restaurant.search(ctx.query);
     } else {
