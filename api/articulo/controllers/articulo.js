@@ -11,7 +11,7 @@ module.exports = {
     let entities;
     ctx.query = {
       ...ctx.query,
-      _limit: 1000,
+      _limit: 100,
     };
     if (ctx.query._q) {
       entities = await strapi.services.articulo.search(ctx.query);
