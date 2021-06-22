@@ -49,7 +49,7 @@ module.exports = {
                         const builder = new xml2js.Builder();
                         const xml = builder.buildObject(result);
 
-                        fs.writeFile('/home/srlechuga/Documents/web/rcg-api/api/articulo/models/sitemap-articulos.xml', xml, (err) => {
+                        fs.writeFile('/var/www/html/static/sitemap-articulos.xml', xml, (err) => {
                             if (err) {
                                 console.log(err);
                             }
