@@ -15,9 +15,9 @@ module.exports = {
 
             var message = {
                 app_id: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
-                contents: { "es": "Spanish Message" },
-                headings: { "es": "Spanish Title" },
-                subtitle: {"es": "Spanish Subtitle"},
+                headings: { "en": "Spanish Title" },
+                subtitle: { "en": "Spanish Subtitle" },
+                contents: { "en": "Spanish Message" },
                 included_segments: ["Subscribed Users"]
             };
 
