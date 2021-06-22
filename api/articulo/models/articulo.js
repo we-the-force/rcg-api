@@ -1,5 +1,4 @@
 "use strict";
-
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/models.html#lifecycle-hooks)
  * to customize this model
@@ -8,18 +7,7 @@
 module.exports = {
     lifecycles: {
         beforeCreate(data) {},
-        afterCreate(result) {
-            var message = {
-                app_id: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
-                contents: { "en": "English Message" },
-                included_segments: ["Subscribed Users"]
-            };
-
-            if (result.published_at != null) {
-                sendNotification(message);
-                //aqui agregar el site map
-            }
-        },
+        afterCreate(result) {},
         beforeUpdate(data) {},
         afterUpdate(data) {
             var message = {
@@ -31,6 +19,44 @@ module.exports = {
             if (data.published_at != null) {
                 sendNotification(message);
                 //aqui agregar el site map
+
+                const fs = require("fs");
+                const xml2js = require('xml2js');
+                const moment = require('moment');
+
+                let newLine = {
+                    loc: [
+                        'https://rcgmedia.mx/articulo/' + data.url + '/'
+                    ],
+                    lastmod: [moment(data.published_at).format("YYYY-MM-DD")],
+                    changefreq: ['daily'],
+                    priority: ['1.0']
+                }
+
+                fs.readFile("/var/www/html/static/sitemap-articulos.xml", "utf-8", (err, data) => {
+                    if (err) {
+                        console.log(err);
+                    }
+
+                    // convert XML data to JSON object
+                    xml2js.parseString(data, (err, result) => {
+                        if (err) {
+                            console.log(err);
+                        }
+
+                        result.urlset.url.push(newLine);
+
+                        const builder = new xml2js.Builder();
+                        const xml = builder.buildObject(result);
+
+                        fs.writeFile('/home/srlechuga/Documents/web/rcg-api/api/articulo/models/sitemap-articulos.xml', xml, (err) => {
+                            if (err) {
+                                console.log(err);
+                            }
+                        });
+
+                    });
+                });
             }
         },
     },
