@@ -17,8 +17,7 @@ module.exports = {
                 app_id: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
                 headings: { "en": "RCG Media" },
                 contents: { "en": data.Titulo },
-                web_url: 'https://rcgmedia.mx/articulo/' + data.url + '/',
-                app_url: 'https://rcgmedia.mx/articulo/' + data.url + '/',
+                url: 'https://rcgmedia.mx/articulo/' + data.url + '/',
                 small_icon: "https://api.rcgmedia.mx/uploads/logo_rcg_media_250_4df3b2a2e1.png",
                 chrome_web_icon: "https://api.rcgmedia.mx/uploads/logo_rcg_media_250_4df3b2a2e1.png", 
                 included_segments: ["Subscribed Users"]
