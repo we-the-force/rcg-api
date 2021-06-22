@@ -11,7 +11,7 @@ module.exports = {
         beforeUpdate(data) {},
         afterUpdate(data) {
 
-            console.log(data);
+            // console.log(data);
 
             var message = {
                 app_id: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
