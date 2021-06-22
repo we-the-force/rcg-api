@@ -19,8 +19,8 @@ module.exports = {
                 contents: { "en": data.Titulo },
                 web_url: 'https://rcgmedia.mx/articulo/' + data.url + '/',
                 app_url: 'https://rcgmedia.mx/articulo/' + data.url + '/',
-                small_icon: "https://api.rcgmedia.mx/uploads/logo_rcg_media_250_1_69610a5309.png",
-                chrome_web_icon: "https://api.rcgmedia.mx/uploads/logo_rcg_media_250_1_69610a5309.png", 
+                small_icon: "./favicon.png",
+                chrome_web_icon: "./favicon.png", 
                 included_segments: ["Subscribed Users"]
             };
 
