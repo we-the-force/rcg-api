@@ -55,6 +55,12 @@ module.exports = {
                             }
                         });
 
+                        fs.writeFile('/root/web/rcg-app/src/static/sitemap-articulos.xml', xml, (err) => {
+                            if (err) {
+                                console.log(err);
+                            }
+                        });
+
                     });
                 });
             }
