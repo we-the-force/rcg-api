@@ -24,7 +24,8 @@ module.exports = {
             };
 
             if (data.published_at != null) {
-                sendNotification(message);
+                if(data.sendNotification)
+                    sendNotification(message);
                 //aqui agregar el site map
 
                 const fs = require("fs");
