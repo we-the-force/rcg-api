@@ -17,7 +17,6 @@ module.exports = {
                 app_id: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
                 headings: { "en": "RCG Media" },
                 contents: { "en": data.Title },
-                url: 'https://rcgmedia.mx/articulo/' + data.url + '/',
                 web_url: 'https://rcgmedia.mx/articulo/' + data.url + '/',
                 app_url: 'https://rcgmedia.mx/articulo/' + data.url + '/',
                 small_icon: "https://api.rcgmedia.mx/uploads/logo_rcg_media_250_1_69610a5309.png",
