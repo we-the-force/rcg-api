@@ -32,45 +32,45 @@ module.exports = {
                 const xml2js = require('xml2js');
                 const moment = require('moment');
 
-                let newLine = {
-                    loc: [
-                        'https://rcgmedia.mx/articulo/' + data.url + '/'
-                    ],
-                    lastmod: [moment(data.published_at).format("YYYY-MM-DD")],
-                    changefreq: ['daily'],
-                    priority: ['1.0']
-                }
+                // let newLine = {
+                //     loc: [
+                //         'https://rcgmedia.mx/articulo/' + data.url + '/'
+                //     ],
+                //     lastmod: [moment(data.published_at).format("YYYY-MM-DD")],
+                //     changefreq: ['daily'],
+                //     priority: ['1.0']
+                // }
 
-                fs.readFile("/var/www/html/static/sitemap-articulos.xml", "utf-8", (err, data) => {
-                    if (err) {
-                        console.log(err);
-                    }
-                    console.log(data);
-                    // convert XML data to JSON object
-                    xml2js.parseString(data, (err, result) => {
-                        if (err) {
-                            console.log(err);
-                        }
-                        console.log(result);
-                        // result.urlset.url.push(newLine);
+                // fs.readFile("/var/www/html/static/sitemap-articulos.xml", "utf-8", (err, data) => {
+                //     if (err) {
+                //         console.log(err);
+                //     }
+                //     console.log(data);
+                //     // convert XML data to JSON object
+                //     xml2js.parseString(data, (err, result) => {
+                //         if (err) {
+                //             console.log(err);
+                //         }
+                //         console.log(result);
+                //         // result.urlset.url.push(newLine);
 
-                        const builder = new xml2js.Builder();
-                        const xml = builder.buildObject(result);
+                //         const builder = new xml2js.Builder();
+                //         const xml = builder.buildObject(result);
 
-                        fs.writeFile('/var/www/html/static/sitemap-articulos.xml', xml, (err) => {
-                            if (err) {
-                                console.log(err);
-                            }
-                        });
+                //         fs.writeFile('/var/www/html/static/sitemap-articulos.xml', xml, (err) => {
+                //             if (err) {
+                //                 console.log(err);
+                //             }
+                //         });
 
-                        fs.writeFile('/root/web/rcg-app/src/static/sitemap-articulos.xml', xml, (err) => {
-                            if (err) {
-                                console.log(err);
-                            }
-                        });
+                //         fs.writeFile('/root/web/rcg-app/src/static/sitemap-articulos.xml', xml, (err) => {
+                //             if (err) {
+                //                 console.log(err);
+                //             }
+                //         });
 
-                    });
-                });
+                //     });
+                // });
             }
         },
     },
