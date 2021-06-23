@@ -45,14 +45,14 @@ module.exports = {
                     if (err) {
                         console.log(err);
                     }
-
+                    console.log(data);
                     // convert XML data to JSON object
                     xml2js.parseString(data, (err, result) => {
                         if (err) {
                             console.log(err);
                         }
                         console.log(result);
-                        result.urlset.url.push(newLine);
+                        // result.urlset.url.push(newLine);
 
                         const builder = new xml2js.Builder();
                         const xml = builder.buildObject(result);
