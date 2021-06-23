@@ -28,9 +28,26 @@ module.exports = {
                     sendNotification(message);
                 //aqui agregar el site map
 
-                const fs = require("fs");
-                const xml2js = require('xml2js');
+                // const fs = require("fs");
+                // const xml2js = require('xml2js');
+                const { create } = require("xmlbuilder2");
+
+                const { readFileSync, writeFileSync } = require("fs");
                 const moment = require('moment');
+
+                let sitemapData = readFileSync("/var/www/html/static/sitemap-articulos.xml");
+                sitemapData=sitemapData.toString();
+                const doc = create(sitemapData);
+                const root = doc.root();
+                root
+                  .ele("url")
+                  .ele("loc").txt("https://rcgmedia.mx/articulo/" + data.url + "/").up()
+                  .ele("lastmod").txt(moment(data.published_at).format("YYYY-MM-DD")).up()
+                  .ele("changefreq").txt("daily").up()
+                  .ele("priority").txt("1.0").up()
+                  .up();
+                sitemapData = doc.end({ prettyPrint: true });
+                writeFileSync("/var/www/html/static/sitemap-articulos.xml", sitemapData);
 
                 // let newLine = {
                 //     loc: [

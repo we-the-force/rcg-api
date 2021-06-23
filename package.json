@@ -40,7 +40,8 @@
         "strapi-plugin-upload": "3.2.5",
         "strapi-plugin-users-permissions": "3.2.5",
         "strapi-utils": "3.2.5",
-        "striptags": "3.1.1"
+        "striptags": "3.1.1",
+        "xmlbuilder2": "^2.4.1"
     },
     "author": {
         "name": "A Strapi developer"
