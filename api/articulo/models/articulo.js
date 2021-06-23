@@ -19,7 +19,7 @@ module.exports = {
                 contents: { "en": data.Titulo },
                 url: 'https://rcgmedia.mx/articulo/' + data.url + '/',
                 small_icon: "https://api.rcgmedia.mx/uploads/logo_rcg_media_250_4df3b2a2e1.png",
-                chrome_web_icon: "https://api.rcgmedia.mx/uploads/logo_rcg_media_250_4df3b2a2e1.png", 
+                chrome_web_icon: "https://api.rcgmedia.mx/uploads/logo_rcg_media_250_4df3b2a2e1.png",
                 included_segments: ["Subscribed Users"]
             };
 
@@ -51,7 +51,7 @@ module.exports = {
                         if (err) {
                             console.log(err);
                         }
-
+                        console.log(result);
                         result.urlset.url.push(newLine);
 
                         const builder = new xml2js.Builder();
