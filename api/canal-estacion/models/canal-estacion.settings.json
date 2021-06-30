@@ -1,42 +1,44 @@
 {
-  "kind": "collectionType",
-  "collectionName": "canal_estacions",
-  "info": {
-    "name": "CanalEstacion"
-  },
-  "options": {
-    "increments": true,
-    "timestamps": true
-  },
-  "attributes": {
-    "nombre": {
-      "type": "string"
+    "kind": "collectionType",
+    "collectionName": "canal_estacions",
+    "info": {
+        "name": "CanalEstacion"
     },
-    "logo": {
-      "model": "file",
-      "via": "related",
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
-      "plugin": "upload",
-      "required": false
+    "options": {
+        "increments": true,
+        "timestamps": true
     },
-    "source_url": {
-      "type": "string"
-    },
-    "Radio_TV": {
-      "type": "boolean",
-      "default": false
-    },
-    "url": {
-      "type": "uid",
-      "targetField": "nombre",
-      "required": true
-    },
-    "descripcion": {
-      "type": "text"
+    "attributes": {
+        "nombre": {
+            "type": "string"
+        },
+        "logo": {
+            "model": "file",
+            "via": "related",
+            "allowedTypes": [
+                "images",
+                "files",
+                "videos"
+            ],
+            "plugin": "upload",
+            "required": false
+        },
+        "source_url": {
+            "type": "string",
+            "autoPopulate": false
+        },
+        "Radio_TV": {
+            "type": "boolean",
+            "default": false
+        },
+        "url": {
+            "type": "uid",
+            "targetField": "nombre",
+            "required": true
+        },
+        "descripcion": {
+            "type": "text",
+            "autoPopulate": false
+        }
     }
-  }
 }
