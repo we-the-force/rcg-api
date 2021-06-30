@@ -1,6 +1,6 @@
 module.exports = ({ env }) => ({
-    host: env("HOST", "127.0.0.1"),
-    url: env("PUBLIC_URL", "https://api.rcgmedia.mx"),
+    host: env("HOST", "localhost"),
+    url: env("PUBLIC_URL", ""),
     port: env.int("PORT", 1337),
     admin: {
         auth: {
