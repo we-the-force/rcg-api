@@ -1,24 +1,25 @@
 {
-  "kind": "collectionType",
-  "collectionName": "categorias",
-  "info": {
-    "name": "Categorias"
-  },
-  "options": {
-    "increments": true,
-    "timestamps": true
-  },
-  "attributes": {
-    "nombre": {
-      "type": "string"
+    "kind": "collectionType",
+    "collectionName": "categorias",
+    "info": {
+        "name": "Categorias"
     },
-    "articulos": {
-      "via": "categoria",
-      "collection": "articulo"
+    "options": {
+        "increments": true,
+        "timestamps": true
     },
-    "url": {
-      "type": "uid",
-      "targetField": "nombre"
+    "attributes": {
+        "nombre": {
+            "type": "string"
+        },
+        "articulos": {
+            "via": "categoria",
+            "collection": "articulo",
+            "autoPopulate": false
+        },
+        "url": {
+            "type": "uid",
+            "targetField": "nombre"
+        }
     }
-  }
 }
