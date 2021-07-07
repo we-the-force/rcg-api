@@ -2,11 +2,13 @@
   "kind": "singleType",
   "collectionName": "preguntas_frecuentes",
   "info": {
-    "name": "preguntas frecuentes"
+    "name": "preguntas frecuentes",
+    "description": ""
   },
   "options": {
     "increments": true,
-    "timestamps": true
+    "timestamps": true,
+    "draftAndPublish": false
   },
   "attributes": {
     "preguntas": {
