@@ -11,10 +11,10 @@
     "draftAndPublish": false
   },
   "attributes": {
-    "preguntas": {
+    "FAQ": {
       "type": "component",
       "repeatable": true,
-      "component": "pregunta-frecuente.preguntas"
+      "component": "faq.faq"
     }
   }
 }

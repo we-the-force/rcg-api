@@ -1,17 +1,17 @@
 {
-  "collectionName": "components_pregunta_frecuente_preguntas",
-  "info": {
-    "name": "preguntas",
-    "icon": "question-circle",
-    "description": ""
-  },
-  "options": {},
-  "attributes": {
-    "pregunta": {
-      "type": "text"
+    "collectionName": "components_pregunta_frecuente_preguntas",
+    "info": {
+        "name": "preguntas",
+        "icon": "question-circle",
+        "description": ""
     },
-    "respuesta": {
-      "type": "text"
+    "options": {},
+    "attributes": {
+        "pregunta": {
+            "type": "richtext"
+        },
+        "respuesta": {
+            "type": "richtext"
+        }
     }
-  }
 }
