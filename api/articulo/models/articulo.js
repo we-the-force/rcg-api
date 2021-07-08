@@ -14,7 +14,7 @@ module.exports = {
             // console.log(data);
 
             var message = {
-                app_id: "2b8f51fa-8098-49d8-a9a5-a36441f41907",
+                app_id: "f2f80301-05fa-442c-8ea4-4fcd0dab1abd",
                 headings: { "en": "RCG Media" },
                 contents: { "en": data.Titulo },
                 url: 'https://rcgmedia.mx/articulo/' + data.url + '/',
