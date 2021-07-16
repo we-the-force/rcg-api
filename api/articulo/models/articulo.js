@@ -95,8 +95,8 @@ module.exports = {
 
 var sendNotification = function(data) {
     var headers = {
-        "Content-Type": "application/json; charset=utf-8",
-        "Authorization": "Basic ODA1YTMyM2ItNzljMC00NGU0LTgxOTItZjk0NGFkYTA4NTdj"
+      "Content-Type": "application/json; charset=utf-8",
+      Authorization: "Basic MjhjMjdmMjYtMjQ4MS00ODc2LWFkOTAtNTFmZmY4NzVlMWM0",
     };
 
     var options = {
